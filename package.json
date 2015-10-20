@@ -1,0 +1,17 @@
+{
+  "name": "teamcity-api",
+  "version": "0.0.1",
+  "dependencies": {
+    "request": "*",
+    "q": "*",
+    "deep-extend": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon": "*"
+  },
+  "scripts": {
+    "test": "mocha -t test"
+  }
+}
