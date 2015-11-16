@@ -1,6 +1,7 @@
 "use strict";
 
-var expect = require("chai").expect
+var util = require("util")
+    , expect = require("chai").expect
     , TeamCityAPI = require("../lib/api")
     , testData = require("./config/test-data")
     ;
@@ -94,6 +95,28 @@ describe("Projects", function() {
 
             expect(parameters).to.have.property("timestamp");
             expect(parameters.timestamp).to.have.property("own", true);
+
+            done();
+          })
+          .done();
+    });
+  });
+
+  describe("#createBuildConfiguration()", function() {
+
+    it("should create an empty BuildConfiguration", function(done) {
+      var time = new Date().getTime()
+          , buildName = util.format("Build:%s", time)
+          ;
+
+      teamcity.createBuildConfiguration({id: "BuildConfigurationTests"}, buildName)
+          .then(function(result) {
+            expect(result).to.exist;
+
+            expect(result).to.have.property("id", util.format("BuildConfigurationTests_Build%s", time));
+            expect(result).to.have.property("name", buildName);
+
+            expect(result).to.have.property("projectId", "BuildConfigurationTests");
 
             done();
           })
