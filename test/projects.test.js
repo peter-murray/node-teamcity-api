@@ -192,4 +192,24 @@ describe("Projects", function() {
     });
   });
 
+  describe("#deleteProject()", function() {
+
+    it("should delete an existing project", function(done) {
+      var time  = new Date().getTime()
+          , name = "ProjectToDelete:" + time
+          ;
+
+      teamcity.createProject(name, "_Root")
+          .then(function(project) {
+            return teamcity.deleteProject(project.id);
+          })
+          .then(function(result) {
+            expect(result).to.be.true;
+            done();
+          })
+          .done()
+          ;
+    });
+  });
+
 });
