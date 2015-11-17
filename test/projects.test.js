@@ -125,4 +125,22 @@ describe("Projects", function() {
   });
 
 
+  describe("#moveProject()", function() {
+
+    it("should move an existing Project", function(done) {
+      teamcity.createProject("MoveProject" + new Date().getTime())
+          .then(function(project) {
+            expect(project).to.have.property("parentProjectId", "_Root");
+
+            return teamcity.moveProject({id: project.id}, {id: "ProjectMoveTarget"});
+          })
+          .then(function(movedProject) {
+            expect(movedProject).to.exist;
+            expect(movedProject).to.have.property("parentProjectId", "ProjectMoveTarget");
+            done();
+          })
+          .done();
+    });
+  });
+
 });
