@@ -124,6 +124,27 @@ describe("Projects", function() {
     });
   });
 
+  describe("#createBuildTemplate()", function() {
+
+    it("should create an empty Build Template", function(done) {
+      var time = new Date().getTime()
+          , buildName = util.format("BuildTemplate:%s", time)
+          ;
+
+      teamcity.createBuildTemplate({id: "BuildTemplateTests"}, buildName)
+          .then(function(result) {
+            expect(result).to.exist;
+
+            expect(result).to.have.property("id", util.format("BuildTemplateTests_BuildTemplate%s", time));
+            expect(result).to.have.property("name", buildName);
+
+            expect(result).to.have.property("projectId", "BuildTemplateTests");
+
+            done();
+          })
+          .done();
+    });
+  });
 
   describe("#moveProject()", function() {
 
