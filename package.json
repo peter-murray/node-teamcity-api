@@ -2,13 +2,13 @@
   "name": "teamcity-api",
   "version": "0.0.1",
   "dependencies": {
-    "request": "*",
-    "q": "*",
-    "deep-extend": "*"
+    "request": "^2.65.0",
+    "q": "^1.4.1",
+    "deep-extend": "^0.4.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "chai": "*",
+    "mocha": "^2.3.4",
+    "chai": "^3.4.1",
     "sinon": "*"
   },
   "scripts": {
