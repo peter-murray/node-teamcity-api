@@ -146,6 +146,34 @@ describe("Projects", function() {
     });
   });
 
+  describe("#getBuildTemplates()", function() {
+
+    it("should get the templates for the Root Project", function(done) {
+      teamcity.getBuildTemplates()
+          .then(function(templates) {
+            expect(templates).to.exist;
+
+            expect(templates).to.have.property("TopLevelTemplate");
+
+            expect(templates["TopLevelTemplate"]).to.have.property("id");
+            expect(templates["TopLevelTemplate"]).to.have.property("name");
+            expect(templates["TopLevelTemplate"]).to.have.property("projectId");
+            done();
+          })
+          .done();
+    });
+
+    it("should get the templates for 'BuildTemplateTests'", function(done) {
+      teamcity.getBuildTemplates({id: "BuildTemplateTests"})
+          .then(function(templates) {
+            expect(templates).to.exist;
+            expect(Object.keys(templates)).to.have.length.greaterThan(0);
+            done();
+          })
+          .done();
+    })
+  });
+
   describe("#moveProject()", function() {
 
     it("should move an existing Project", function(done) {
