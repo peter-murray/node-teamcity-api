@@ -1,0 +1,44 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/projects/id:_Root/parameters",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 3,
+            "href": "/app/rest/projects/id:_Root/parameters",
+            "property": [
+                {
+                    "name": "abc",
+                    "value": "xyz",
+                    "own": true
+                },
+                {
+                    "name": "myTestValue",
+                    "value": "\"1448369904648\"",
+                    "own": true
+                },
+                {
+                    "name": "timestamp",
+                    "value": "1448361890450",
+                    "own": true
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=43B61FB8E90B6DC3582CCC2A818B49C4; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 Nov 2015 13:12:29 GMT",
+            "connection": "close"
+        }
+    }
+]

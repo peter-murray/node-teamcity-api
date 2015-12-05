@@ -1,0 +1,140 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/projects",
+        "body": "<newProjectDescription name=\"MoveProject\"><parentProject locator=\"id:_Root\" /></newProjectDescription>",
+        "status": 200,
+        "response": {
+            "id": "MoveProject",
+            "name": "MoveProject",
+            "parentProjectId": "_Root",
+            "href": "/httpAuth/app/rest/projects/id:MoveProject",
+            "webUrl": "http://localhost:8111/project.html?projectId=MoveProject",
+            "parentProject": {
+                "id": "_Root",
+                "name": "<Root project>",
+                "description": "Contains all other projects",
+                "href": "/httpAuth/app/rest/projects/id:_Root",
+                "webUrl": "http://localhost:8111/project.html?projectId=_Root"
+            },
+            "buildTypes": {
+                "count": 0,
+                "buildType": []
+            },
+            "templates": {
+                "count": 0,
+                "buildType": []
+            },
+            "parameters": {
+                "count": 3,
+                "href": "/app/rest/projects/id:MoveProject/parameters",
+                "property": [
+                    {
+                        "name": "abc",
+                        "value": "xyz"
+                    },
+                    {
+                        "name": "myTestValue",
+                        "value": "\"1448369904648\""
+                    },
+                    {
+                        "name": "timestamp",
+                        "value": "1448361890450"
+                    }
+                ]
+            },
+            "vcsRoots": {
+                "count": 0,
+                "href": "/httpAuth/app/rest/vcs-roots?locator=project:(id:MoveProject)"
+            },
+            "projects": {
+                "count": 0
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=30926A5927B6C12F37E400730B761BD8; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 Nov 2015 13:12:29 GMT",
+            "connection": "close"
+        }
+    },
+    {
+        "scope": "http://localhost:8111",
+        "method": "PUT",
+        "path": "/httpAuth/app/rest/projects/id:MoveProject/parentProject",
+        "body": {
+            "id": "ProjectMoveTarget"
+        },
+        "status": 200,
+        "response": {
+            "id": "MoveProject",
+            "name": "MoveProject",
+            "parentProjectId": "ProjectMoveTarget",
+            "href": "/httpAuth/app/rest/projects/id:MoveProject",
+            "webUrl": "http://localhost:8111/project.html?projectId=MoveProject",
+            "parentProject": {
+                "id": "ProjectMoveTarget",
+                "name": "ProjectMoveTarget",
+                "parentProjectId": "_Root",
+                "href": "/httpAuth/app/rest/projects/id:ProjectMoveTarget",
+                "webUrl": "http://localhost:8111/project.html?projectId=ProjectMoveTarget"
+            },
+            "buildTypes": {
+                "count": 0,
+                "buildType": []
+            },
+            "templates": {
+                "count": 0,
+                "buildType": []
+            },
+            "parameters": {
+                "count": 3,
+                "href": "/app/rest/projects/id:MoveProject/parameters",
+                "property": [
+                    {
+                        "name": "abc",
+                        "value": "xyz"
+                    },
+                    {
+                        "name": "myTestValue",
+                        "value": "\"1448369904648\""
+                    },
+                    {
+                        "name": "timestamp",
+                        "value": "1448361890450"
+                    }
+                ]
+            },
+            "vcsRoots": {
+                "count": 0,
+                "href": "/httpAuth/app/rest/vcs-roots?locator=project:(id:MoveProject)"
+            },
+            "projects": {
+                "count": 0
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=85618C0B78CBF156808B2C126037C384; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 Nov 2015 13:12:29 GMT",
+            "connection": "close"
+        }
+    }
+]

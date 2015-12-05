@@ -1,0 +1,36 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/projects/id:_Root/templates",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 1,
+            "buildType": [
+                {
+                    "id": "TopLevelTemplate",
+                    "name": "TopLevelTemplate",
+                    "templateFlag": true,
+                    "projectName": "<Root project>",
+                    "projectId": "_Root",
+                    "href": "/httpAuth/app/rest/buildTypes/id:TopLevelTemplate"
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=61E69035A61EEFAA5A1CF4852DCFF34C; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 Nov 2015 13:12:29 GMT",
+            "connection": "close"
+        }
+    }
+]
