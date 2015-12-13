@@ -50,6 +50,14 @@ describe("TeamCityAPI", function () {
       expectHostname(teamcity, "localhost");
       expectProtocol(teamcity, "http");
     });
+
+    it("should fail with only a hostname", function() {
+      var fn = function () {
+        return new TeamCityAPI({hostname: "localhost"})
+      };
+
+      expect(fn).to.throw(/Required parameter .* was not provided/);
+    });
   });
 });
 
