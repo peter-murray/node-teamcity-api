@@ -1,6 +1,6 @@
 {
   "name": "teamcity-rest-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "deep-extend": "^0.4.0",
     "q": "^1.4.1",
@@ -14,7 +14,7 @@
   "scripts": {
     "test": "mocha -t test"
   },
-  "repository":  {
+  "repository": {
     "type": "git",
     "url": "https://github.com/peter-murray/node-teamcity-api.git"
   }
