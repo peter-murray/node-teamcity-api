@@ -176,6 +176,15 @@ describe("Projects", function () {
         })
         .done();
     });
+
+    it("should fail to create under the Root Project", function() {
+      function create() {
+        teamcity.createBuildConfiguration({id: "_Root"}, "buildThatCannotExist")
+          .done();
+      }
+
+      expect(create).to.throw(/cannot create a build configuration/i);
+    });
   });
 
   describe("#createBuildTemplate()", function () {
