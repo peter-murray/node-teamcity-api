@@ -1,6 +1,6 @@
 {
   "name": "teamcity-rest-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
     "deep-extend": "^0.4.0",
     "q": "^1.4.1",
