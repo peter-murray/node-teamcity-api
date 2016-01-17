@@ -119,4 +119,46 @@ describe("VCSRoots", function () {
     });
   });
 
+  describe("#deleteVcsRoot()", function () {
+
+    var vcsRoot;
+
+    beforeEach(function (done) {
+      teamcity.createVcsRoot(
+        {
+          name: "TestDeleteVcsRoot",
+          vcsName: "jetbrains.git",
+          properties: {
+            property: [
+              {name: "agentCleanFilesPolicy", value: "ALL_UNTRACKED"},
+              {name: "agentCleanPolicy", value: "ON_BRANCH_CHANGE"},
+              {name: "authMethod", value: "PRIVATE_KEY_DEFAULT"},
+              {name: "branch", value: "refs/heads/master"},
+              {name: "ignoreKnownHosts", value: "true"},
+              {name: "push_url", value: "git@github.com:someorg/dummy-repo.git"},
+              {name: "submoduleCheckout", value: "CHECKOUT"},
+              {name: "teamcity:branchSpec", value: "+:refs/heads/(*)\n+:refs/(pull/*/merge)"},
+              {name: "url", value: "https://github.com/someorg/dummy-repo.git"},
+              {name: "useAlternates", value: "true"},
+              {name: "usernameStyle", value: "USERID"}
+            ]
+          }
+        })
+        .then(function (result) {
+          vcsRoot = result.id;
+          done();
+        })
+        .done();
+    });
+
+    it("should delete a VCS Root", function (done) {
+      teamcity.deleteVcsRoot(vcsRoot)
+        .then(function(result) {
+          expect(result).to.be.true;
+          done();
+        })
+        .done();
+    });
+  });
+
 });
