@@ -1,0 +1,144 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/vcs-roots",
+        "body": {
+            "project": {
+                "id": "_Root"
+            },
+            "name": "TestVcsRootCreate",
+            "vcsName": "jetbrains.git",
+            "properties": {
+                "property": [
+                    {
+                        "name": "agentCleanFilesPolicy",
+                        "value": "ALL_UNTRACKED"
+                    },
+                    {
+                        "name": "agentCleanPolicy",
+                        "value": "ON_BRANCH_CHANGE"
+                    },
+                    {
+                        "name": "authMethod",
+                        "value": "PRIVATE_KEY_DEFAULT"
+                    },
+                    {
+                        "name": "branch",
+                        "value": "refs/heads/master"
+                    },
+                    {
+                        "name": "ignoreKnownHosts",
+                        "value": "true"
+                    },
+                    {
+                        "name": "push_url",
+                        "value": "git@github.com:someorg/dummy-repo.git"
+                    },
+                    {
+                        "name": "submoduleCheckout",
+                        "value": "CHECKOUT"
+                    },
+                    {
+                        "name": "teamcity:branchSpec",
+                        "value": "+:refs/heads/(*)\n+:refs/(pull/*/merge)"
+                    },
+                    {
+                        "name": "url",
+                        "value": "https://github.com/someorg/dummy-repo.git"
+                    },
+                    {
+                        "name": "useAlternates",
+                        "value": "true"
+                    },
+                    {
+                        "name": "usernameStyle",
+                        "value": "USERID"
+                    }
+                ]
+            }
+        },
+        "status": 200,
+        "response": {
+            "id": "Root_TestVcsRootCreate",
+            "name": "TestVcsRootCreate",
+            "vcsName": "jetbrains.git",
+            "status": "NOT_MONITORED",
+            "lastChecked": "20160523T163009+0100",
+            "href": "/httpAuth/app/rest/vcs-roots/id:Root_TestVcsRootCreate",
+            "project": {
+                "id": "_Root",
+                "name": "<Root project>",
+                "description": "Contains all other projects",
+                "href": "/httpAuth/app/rest/projects/id:_Root",
+                "webUrl": "http://localhost:8111/project.html?projectId=_Root"
+            },
+            "properties": {
+                "count": 11,
+                "property": [
+                    {
+                        "name": "agentCleanFilesPolicy",
+                        "value": "ALL_UNTRACKED"
+                    },
+                    {
+                        "name": "agentCleanPolicy",
+                        "value": "ON_BRANCH_CHANGE"
+                    },
+                    {
+                        "name": "authMethod",
+                        "value": "PRIVATE_KEY_DEFAULT"
+                    },
+                    {
+                        "name": "branch",
+                        "value": "refs/heads/master"
+                    },
+                    {
+                        "name": "ignoreKnownHosts",
+                        "value": "true"
+                    },
+                    {
+                        "name": "push_url",
+                        "value": "git@github.com:someorg/dummy-repo.git"
+                    },
+                    {
+                        "name": "submoduleCheckout",
+                        "value": "CHECKOUT"
+                    },
+                    {
+                        "name": "teamcity:branchSpec",
+                        "value": "+:refs/heads/(*)\n+:refs/(pull/*/merge)"
+                    },
+                    {
+                        "name": "url",
+                        "value": "https://github.com/someorg/dummy-repo.git"
+                    },
+                    {
+                        "name": "useAlternates",
+                        "value": "true"
+                    },
+                    {
+                        "name": "usernameStyle",
+                        "value": "USERID"
+                    }
+                ]
+            },
+            "vcsRootInstances": {
+                "href": "/httpAuth/app/rest/vcs-root-instances?locator=vcsRoot:(id:Root_TestVcsRootCreate)"
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=A896CA84AA897CE1F8631272DC5C727A; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 May 2016 08:36:26 GMT",
+            "connection": "close"
+        }
+    }
+]

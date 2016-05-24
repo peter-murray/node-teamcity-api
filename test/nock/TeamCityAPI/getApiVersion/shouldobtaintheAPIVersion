@@ -1,0 +1,24 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/guestAuth/app/rest/apiVersion",
+        "body": "",
+        "status": 200,
+        "response": 9.1,
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=A97752C8E5A202DE68CF933E0E73F816; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "text/plain",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 May 2016 08:21:48 GMT",
+            "connection": "close"
+        }
+    }
+]
