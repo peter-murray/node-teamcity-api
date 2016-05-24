@@ -26,7 +26,6 @@ describe("TeamCityAPI", function () {
   });
 
   describe("#getVersion()", function () {
-
     //TODO need the guest and httpAuth variations tested
 
     it("should obtain the version of TeamCity", function () {
@@ -38,7 +37,6 @@ describe("TeamCityAPI", function () {
   });
 
   describe("#getApiVersion()", function () {
-
     //TODO need the guest and httpAuth variations tested
 
     it("should obtain the API Version", function () {

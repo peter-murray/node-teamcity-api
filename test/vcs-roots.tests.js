@@ -7,7 +7,7 @@ var util = require("util")
   , nockHelper = require("./nock-helper")
   ;
 
-describe("VCSRoots", function () {
+describe("vcsRoots", function () {
 
   var teamcity = new TeamCityAPI(testData);
 
@@ -27,10 +27,10 @@ describe("VCSRoots", function () {
     nockHelper.reset();
   });
 
-  describe("#getAllVcsRoots()", function () {
+  describe("#getAll()", function () {
 
-    it("should retireve all VCS Roots", function () {
-      return teamcity.getAllVcsRoots()
+    it("should retrieve all VCS Roots", function () {
+      return teamcity.vcsRoots.getAll()
         .then(function (vcsRoots) {
           expect(vcsRoots).to.exist;
           expect(vcsRoots).to.have.property("TopLevelGitRepository");
@@ -38,10 +38,10 @@ describe("VCSRoots", function () {
     });
   });
 
-  describe("#getVcsRoot()", function () {
+  describe("#get()", function () {
 
     it("should get a VCS Root by id", function () {
-      return teamcity.getVcsRoot("TopLevelGitRepository")
+      return teamcity.vcsRoots.get("TopLevelGitRepository")
         .then(function (vcsRoot) {
           expect(vcsRoot).to.exist;
 
@@ -57,7 +57,7 @@ describe("VCSRoots", function () {
     });
   });
 
-  describe("#createVcsRoot()", function () {
+  describe("#create()", function () {
 
     var vcsRoot = {
       name: "TestVcsRootCreate",
@@ -80,7 +80,7 @@ describe("VCSRoots", function () {
     };
 
     it("should create a new VCS Root for the Root project", function () {
-      return teamcity.createVcsRoot(vcsRoot)
+      return teamcity.vcsRoots.create(vcsRoot)
         .then(function (result) {
           expect(result).to.exist;
 
@@ -101,7 +101,7 @@ describe("VCSRoots", function () {
     });
 
     it("should create a new VCS Root for a child project", function () {
-      return teamcity.createVcsRoot(vcsRoot, "ChildProjectWithVcsRoot")
+      return teamcity.vcsRoots.create(vcsRoot, "ChildProjectWithVcsRoot")
         .then(function (result) {
           expect(result).to.exist;
 
@@ -111,12 +111,12 @@ describe("VCSRoots", function () {
     });
   });
 
-  describe("#deleteVcsRoot()", function () {
+  describe("#delete()", function () {
 
     var vcsRoot;
 
     beforeEach(function () {
-      return teamcity.createVcsRoot(
+      return teamcity.vcsRoots.create(
         {
           name: "TestDeleteVcsRoot",
           vcsName: "jetbrains.git",
@@ -142,7 +142,7 @@ describe("VCSRoots", function () {
     });
 
     it("should delete a VCS Root", function () {
-      return teamcity.deleteVcsRoot(vcsRoot)
+      return teamcity.vcsRoots.delete(vcsRoot)
         .then(function(result) {
           expect(result).to.be.true;
         });

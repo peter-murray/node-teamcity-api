@@ -6,7 +6,7 @@ var expect = require("chai").expect
   , nockHelper = require("./nock-helper")
   ;
 
-describe("Build Configuration", function () {
+describe("#buildConfigurations", function () {
 
   var teamcity = new TeamCityAPI(testData);
 
@@ -26,10 +26,10 @@ describe("Build Configuration", function () {
     nockHelper.reset();
   });
 
-  describe("#getBuildConfiguration()", function () {
+  describe("#get()", function () {
 
     it("should obtain the BuildConfiguration by id", function () {
-      return teamcity.getBuildConfiguration({id: "Tests_BuildConfigurationTest"})
+      return teamcity.buildConfigurations.get({id: "Tests_BuildConfigurationTest"})
         .then(function (buildConfig) {
           expect(buildConfig).to.exist;
 
@@ -49,47 +49,47 @@ describe("Build Configuration", function () {
     //TODO need more tests using different variations of locator
   });
 
-  describe("#pauseBuildConfiguration()", function () {
+  describe("#pause()", function () {
 
     it("should pause a BuildConfiguration", function () {
-      return teamcity.pauseBuildConfiguration({id: "Tests_BuildConfigurationToPause"})
+      return teamcity.buildConfigurations.pause({id: "Tests_BuildConfigurationToPause"})
         .then(function (result) {
           expect(result).to.have.property("paused", true);
         });
     });
   });
 
-  describe("#unpauseBuildConfiguration()", function () {
+  describe("#unpause()", function () {
 
     it("should unpause a BuildConfiguration", function () {
-      return teamcity.unpauseBuildConfiguration({id: "Tests_BuildConfigurationToPause"})
+      return teamcity.buildConfigurations.unpause({id: "Tests_BuildConfigurationToPause"})
         .then(function (result) {
           expect(result).to.have.property("paused", false);
         });
     });
   });
 
-  describe("#isBuildConfigurationPaused()", function () {
+  describe("#isPaused()", function () {
 
     it("should report back the paused status", function () {
-      return teamcity.isBuildConfigurationPaused({id: "Tests_PausedBuildConfiguration"})
+      return teamcity.buildConfigurations.isPaused({id: "Tests_PausedBuildConfiguration"})
         .then(function (result) {
           expect(result).to.have.property("paused", true);
         });
     });
 
     it("should report that the BuildConfiguration is not paused", function () {
-      return teamcity.isBuildConfigurationPaused({id: "Tests_UnpausedBuildConfiguration"})
+      return teamcity.buildConfigurations.isPaused({id: "Tests_UnpausedBuildConfiguration"})
         .then(function (result) {
           expect(result).to.have.property("paused", false);
         });
     });
   });
 
-  describe("#getBuildConfigurationVcsRoots()", function () {
+  describe("#getVcsRoots()", function () {
 
     it("should obtain all VCS Roots", function () {
-      return teamcity.getBuildConfigurationVcsRoots({id: "Tests_Deploy"})
+      return teamcity.buildConfigurations.getVcsRoots({id: "Tests_Deploy"})
         .then(function (vcsRoots) {
           expect(vcsRoots).to.have.property("OrgTest");
         });
@@ -103,10 +103,10 @@ describe("Build Configuration", function () {
       ;
 
     beforeEach(function () {
-      return teamcity.createProject("test", "_Root")
+      return teamcity.projects.create("test", "_Root")
         .then(function (project) {
           projectId = project.id;
-          return teamcity.createBuildConfiguration({id: project.id}, "addVcsRootTest")
+          return teamcity.projects.createBuildConfiguration({id: project.id}, "addVcsRootTest")
         })
         .then(function (created) {
           buildLocator = {id: created.id};
@@ -115,7 +115,7 @@ describe("Build Configuration", function () {
 
     afterEach(function (done) {
       if (buildLocator) {
-        teamcity.deleteProject({id: projectId})
+        teamcity.projects.delete({id: projectId})
           .then(function () {
             done();
           });
@@ -125,17 +125,17 @@ describe("Build Configuration", function () {
     });
 
     it("should add a new VCS Root", function () {
-      return teamcity.attachVcsRoot(buildLocator, "OrgTest")
+      return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest")
         .then(function (result) {
           expect(result).to.be.true;
         });
     });
 
     it("should work when adding an existing VCS Root", function () {
-      return teamcity.attachVcsRoot(buildLocator, "OrgTest")
+      return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest")
         .then(function (result) {
           expect(result).to.be.true;
-          return teamcity.attachVcsRoot(buildLocator, "OrgTest");
+          return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest");
         })
         .then(function (result) {
           expect(result).to.be.true;
@@ -150,14 +150,14 @@ describe("Build Configuration", function () {
       ;
 
     beforeEach(function () {
-      return teamcity.createProject("test", "_Root")
+      return teamcity.projects.create("test", "_Root")
         .then(function (project) {
           projectId = project.id;
-          return teamcity.createBuildConfiguration({id: project.id}, "deleteVcsRootTest")
+          return teamcity.projects.createBuildConfiguration({id: project.id}, "deleteVcsRootTest")
         })
         .then(function (created) {
           buildLocator = {id: created.id};
-          return teamcity.attachVcsRoot(buildLocator, "OrgTest");
+          return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest");
         })
         .then(function (result) {
           expect(result).to.be.true;
@@ -166,7 +166,7 @@ describe("Build Configuration", function () {
 
     afterEach(function (done) {
       if (projectId) {
-        teamcity.deleteProject({id: projectId})
+        teamcity.projects.delete({id: projectId})
           .then(function () {
             done();
           })
@@ -176,14 +176,14 @@ describe("Build Configuration", function () {
     });
 
     it("should remove an existing VCS Root", function () {
-      return teamcity.detachVcsRoot(buildLocator, "OrgTest")
+      return teamcity.buildConfigurations.detachVcsRoot(buildLocator, "OrgTest")
         .then(function (result) {
           expect(result).to.be.true;
         });
     });
 
     it("should fail to remove a non-existing VCS Root", function () {
-      return teamcity.detachVcsRoot(buildLocator, "nonExistentRoot")
+      return teamcity.buildConfigurations.detachVcsRoot(buildLocator, "nonExistentRoot")
         .then(function () {
             throw new Error("should never get here");
           }
@@ -193,17 +193,17 @@ describe("Build Configuration", function () {
     });
   });
 
-  describe("#deleteBuildConfiguration()", function () {
+  describe("#delete()", function () {
 
     var projectId
       , buildLocator
       ;
 
     beforeEach(function () {
-      return teamcity.createProject("test", "_Root")
+      return teamcity.projects.create("test", "_Root")
         .then(function (project) {
           projectId = project.id;
-          return teamcity.createBuildConfiguration({id: project.id}, "deleteBuildConfiguration")
+          return teamcity.projects.createBuildConfiguration({id: project.id}, "deleteBuildConfiguration")
         })
         .then(function (result) {
           buildLocator = {id: result.id};
@@ -212,7 +212,7 @@ describe("Build Configuration", function () {
 
     afterEach(function (done) {
       if (projectId) {
-        teamcity.deleteProject({id: projectId})
+        teamcity.projects.delete({id: projectId})
           .then(function () {
             done();
           });
@@ -222,14 +222,14 @@ describe("Build Configuration", function () {
     });
 
     it("should delete an existing Build Configuration", function () {
-      return teamcity.deleteBuildConfiguration(buildLocator)
+      return teamcity.buildConfigurations.delete(buildLocator)
         .then(function (result) {
           expect(result).to.be.true;
         });
     });
 
     it("should fail to delete a non-existing Build Configuration", function () {
-      return teamcity.deleteBuildConfiguration({id: "TestConfigThatDoesNotExist"})
+      return teamcity.buildConfigurations.delete({id: "TestConfigThatDoesNotExist"})
         .then(function () {
             throw new Error("Should not get here");
           },

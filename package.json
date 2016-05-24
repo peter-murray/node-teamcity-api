@@ -3,13 +3,12 @@
   "version": "0.0.3",
   "dependencies": {
     "axios": "^0.11.1",
-    "deep-extend": "^0.4.0",
-    "q": "^1.4.1"
+    "deep-extend": "^0.4.0"
   },
   "devDependencies": {
-    "mocha": "^2.3.4",
-    "chai": "^3.4.1",
-    "nock": "^3.1.1"
+    "mocha": "^2.5.2",
+    "chai": "^3.5.0",
+    "nock": "^3.6.0"
   },
   "scripts": {
     "test": "mocha -t test"

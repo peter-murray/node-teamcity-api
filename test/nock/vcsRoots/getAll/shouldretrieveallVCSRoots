@@ -1,0 +1,54 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/vcs-roots",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 5,
+            "href": "/httpAuth/app/rest/vcs-roots",
+            "vcs-root": [
+                {
+                    "id": "OrgTest",
+                    "name": "OrgTest",
+                    "href": "/httpAuth/app/rest/vcs-roots/id:OrgTest"
+                },
+                {
+                    "id": "Root_TestVcsRoot_2",
+                    "name": "TestVcsRoot",
+                    "href": "/httpAuth/app/rest/vcs-roots/id:Root_TestVcsRoot_2"
+                },
+                {
+                    "id": "Root_TestVcsRootCreate",
+                    "name": "TestVcsRootCreate",
+                    "href": "/httpAuth/app/rest/vcs-roots/id:Root_TestVcsRootCreate"
+                },
+                {
+                    "id": "ChildProjectWithVcsRoot_TestVcsRootCreate",
+                    "name": "TestVcsRootCreate",
+                    "href": "/httpAuth/app/rest/vcs-roots/id:ChildProjectWithVcsRoot_TestVcsRootCreate"
+                },
+                {
+                    "id": "TopLevelGitRepository",
+                    "name": "TopLevelGitRepository",
+                    "href": "/httpAuth/app/rest/vcs-roots/id:TopLevelGitRepository"
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=72DE8DD2CFED55E84BDCBE31641FB175; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 May 2016 16:12:57 GMT",
+            "connection": "close"
+        }
+    }
+]
