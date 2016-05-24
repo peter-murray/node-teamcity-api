@@ -29,22 +29,19 @@ describe("VCSRoots", function () {
 
   describe("#getAllVcsRoots()", function () {
 
-    it("should retireve all VCS Roots", function (done) {
-      teamcity.getAllVcsRoots()
+    it("should retireve all VCS Roots", function () {
+      return teamcity.getAllVcsRoots()
         .then(function (vcsRoots) {
           expect(vcsRoots).to.exist;
-
           expect(vcsRoots).to.have.property("TopLevelGitRepository");
-          done();
-        })
-        .done();
+        });
     });
   });
 
   describe("#getVcsRoot()", function () {
 
-    it("should get a VCS Root by id", function (done) {
-      teamcity.getVcsRoot("TopLevelGitRepository")
+    it("should get a VCS Root by id", function () {
+      return teamcity.getVcsRoot("TopLevelGitRepository")
         .then(function (vcsRoot) {
           expect(vcsRoot).to.exist;
 
@@ -56,16 +53,14 @@ describe("VCSRoots", function () {
 
           expect(vcsRoot).to.have.property("properties");
           expect(vcsRoot.properties).to.have.property("authMethod", "PRIVATE_KEY_DEFAULT");
-          done();
-        })
-        .done();
+        });
     });
   });
 
   describe("#createVcsRoot()", function () {
 
     var vcsRoot = {
-      name: "TestVcsRoot",
+      name: "TestVcsRootCreate",
       vcsName: "jetbrains.git",
       properties: {
         property: [
@@ -84,13 +79,13 @@ describe("VCSRoots", function () {
       }
     };
 
-    it("should create a new VCS Root for the Root project", function (done) {
-      teamcity.createVcsRoot(vcsRoot)
+    it("should create a new VCS Root for the Root project", function () {
+      return teamcity.createVcsRoot(vcsRoot)
         .then(function (result) {
           expect(result).to.exist;
 
-          expect(result).to.have.property("id", "Root_TestVcsRoot");
-          expect(result).to.have.property("name", "TestVcsRoot");
+          expect(result).to.have.property("id", "Root_TestVcsRootCreate");
+          expect(result).to.have.property("name", "TestVcsRootCreate");
           expect(result).to.have.property("vcsName", "jetbrains.git");
           expect(result).to.have.property("status");
 
@@ -102,14 +97,11 @@ describe("VCSRoots", function () {
           expect(result.properties).to.have.property("branch", "refs/heads/master");
           expect(result.properties).to.have.property("push_url", "git@github.com:someorg/dummy-repo.git");
           expect(result.properties).to.have.property("url", "https://github.com/someorg/dummy-repo.git");
-
-          done();
-        })
-        .done();
+        });
     });
 
     it("should create a new VCS Root for a child project", function () {
-      teamcity.createVcsRoot(vcsRoot, "ChildProjectWithVcsRoot")
+      return teamcity.createVcsRoot(vcsRoot, "ChildProjectWithVcsRoot")
         .then(function (result) {
           expect(result).to.exist;
 
@@ -123,8 +115,8 @@ describe("VCSRoots", function () {
 
     var vcsRoot;
 
-    beforeEach(function (done) {
-      teamcity.createVcsRoot(
+    beforeEach(function () {
+      return teamcity.createVcsRoot(
         {
           name: "TestDeleteVcsRoot",
           vcsName: "jetbrains.git",
@@ -146,18 +138,14 @@ describe("VCSRoots", function () {
         })
         .then(function (result) {
           vcsRoot = result.id;
-          done();
-        })
-        .done();
+        });
     });
 
-    it("should delete a VCS Root", function (done) {
-      teamcity.deleteVcsRoot(vcsRoot)
+    it("should delete a VCS Root", function () {
+      return teamcity.deleteVcsRoot(vcsRoot)
         .then(function(result) {
           expect(result).to.be.true;
-          done();
-        })
-        .done();
+        });
     });
   });
 
