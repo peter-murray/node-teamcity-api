@@ -239,4 +239,30 @@ describe("#buildConfigurations", function () {
     });
   });
 
+
+  describe("#attachTemplate()", function() {
+
+    var buildLocator
+      ;
+
+    beforeEach(function() {
+      return teamcity.projects.createBuildConfiguration({id: "BuildTemplateTests"}, "BuildForAttachment")
+        .then(function(build) {
+          buildLocator = {id: build.id};
+        })
+    });
+
+    afterEach(function() {
+      return teamcity.buildConfigurations.delete(buildLocator);
+    });
+
+    it("should attach a build template", function() {
+      var templateLocator = {id: "BuildTemplateTests_BuildTemplate1448370750225"};
+
+      return teamcity.buildConfigurations.attachTemplate(buildLocator, templateLocator)
+        .then(function(result) {
+          expect(result).to.have.property("id", templateLocator.id);
+        });
+    })
+  })
 });
