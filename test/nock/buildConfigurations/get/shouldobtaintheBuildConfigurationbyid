@@ -1,0 +1,154 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": "Tests_BuildConfigurationTest",
+            "name": "BuildConfigurationTest",
+            "description": "A simple BuildConfiguration for Testing",
+            "projectName": "Tests",
+            "projectId": "Tests",
+            "href": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest",
+            "webUrl": "http://localhost:8111/viewType.html?buildTypeId=Tests_BuildConfigurationTest",
+            "project": {
+                "id": "Tests",
+                "name": "Tests",
+                "parentProjectId": "_Root",
+                "href": "/httpAuth/app/rest/projects/id:Tests",
+                "webUrl": "http://localhost:8111/project.html?projectId=Tests"
+            },
+            "vcs-root-entries": {
+                "count": 0,
+                "vcs-root-entry": []
+            },
+            "settings": {
+                "count": 17,
+                "property": [
+                    {
+                        "name": "allowExternalStatus",
+                        "value": "false"
+                    },
+                    {
+                        "name": "allowPersonalBuildTriggering",
+                        "value": "true"
+                    },
+                    {
+                        "name": "artifactRules",
+                        "value": ""
+                    },
+                    {
+                        "name": "buildNumberCounter",
+                        "value": "1"
+                    },
+                    {
+                        "name": "buildNumberPattern",
+                        "value": "%build.counter%"
+                    },
+                    {
+                        "name": "checkoutDirectory"
+                    },
+                    {
+                        "name": "checkoutMode",
+                        "value": "ON_SERVER"
+                    },
+                    {
+                        "name": "cleanBuild",
+                        "value": "false"
+                    },
+                    {
+                        "name": "enableHangingBuildsDetection",
+                        "value": "true"
+                    },
+                    {
+                        "name": "executionTimeoutMin",
+                        "value": "0"
+                    },
+                    {
+                        "name": "maximumNumberOfBuilds",
+                        "value": "0"
+                    },
+                    {
+                        "name": "shouldFailBuildIfTestsFailed",
+                        "value": "true"
+                    },
+                    {
+                        "name": "shouldFailBuildOnAnyErrorMessage",
+                        "value": "false"
+                    },
+                    {
+                        "name": "shouldFailBuildOnBadExitCode",
+                        "value": "true"
+                    },
+                    {
+                        "name": "shouldFailBuildOnOOMEOrCrash",
+                        "value": "true"
+                    },
+                    {
+                        "name": "showDependenciesChanges",
+                        "value": "false"
+                    },
+                    {
+                        "name": "vcsLabelingBranchFilter",
+                        "value": "+:<default>"
+                    }
+                ]
+            },
+            "parameters": {
+                "count": 3,
+                "href": "/app/rest/buildTypes/id:Tests_BuildConfigurationTest/parameters",
+                "property": [
+                    {
+                        "name": "abc",
+                        "value": "xyz"
+                    },
+                    {
+                        "name": "myTestValue",
+                        "value": "1448369904648"
+                    },
+                    {
+                        "name": "timestamp",
+                        "value": "1448361890450"
+                    }
+                ]
+            },
+            "steps": {
+                "count": 0
+            },
+            "features": {
+                "count": 0
+            },
+            "triggers": {
+                "count": 0
+            },
+            "snapshot-dependencies": {
+                "count": 0
+            },
+            "artifact-dependencies": {
+                "count": 0
+            },
+            "agent-requirements": {
+                "count": 0
+            },
+            "builds": {
+                "href": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest/builds/"
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=CC23EFC3AC18E8FCE3D2469F996CECE9; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 May 2016 08:21:48 GMT",
+            "connection": "close"
+        }
+    }
+]

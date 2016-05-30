@@ -1,0 +1,31 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/projects/name:%3CRoot%20project%3E/parameters",
+        "body": {
+            "name": "myTestValue",
+            "value": "1448369904648"
+        },
+        "status": 200,
+        "response": {
+            "name": "myTestValue",
+            "value": "1448369904648",
+            "own": true
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=092876A66E72488A3893FDB3793B5B16; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 May 2016 08:21:48 GMT",
+            "connection": "close"
+        }
+    }
+]

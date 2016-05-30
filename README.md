@@ -1,6 +1,6 @@
 # Node.js TeamCity REST API Library
 
-A Node.js API wrapper around the TeamCity RESTful API.
+A Node.js API wrapper around the TeamCity RESTful API to make it easy to use.
 
 ## Installation
 To use the library in Node.js, install it using npm:
@@ -8,63 +8,80 @@ To use the library in Node.js, install it using npm:
 ```npm install teamcity-rest-api```
 
 ## API Style
-This API is written to support promises, and future work will be done to introduce callback support as well, but for now
-the primary use case was for integration with other software using promises.
-
-## Examples
+This library has been writtne to support Node.js 4.x and native promises, 
+there are no callbacks from any of the functions.
 
 
-## Connecting to a TeamCity Server
+# Examples
 
-You can instantiate the TeamCity client using the `create()` function with either a URL or a configuration object.
+## Creating the Client
+You can instantiate the API client using the `create()` function with a
+`URL` or `configuration` object.
 
-If attempting to connect as a user (and not using the guest RESTful API connection), you will
-have to use a configuration object.
+If you use the `URL`, you will be connected to the `guest` RESTful API endpoints.
+This will require that you have guest access turned on in the TeamCity Server
+that you are connecting to. Note that not all endpoints are accessible
+via the `guest` API.
 
 ### Connecting Using a URL
 
 ```js
-var TeamCityAPI = require("teamcity-rest-api");
+var teamcity = require("teamcity-rest-api");
 
-var teamcity = new TeamCityAPI({});
+var client = teamcity.create('http://localhost:8111')
 ```
 
 ### Connecting Using a Configuration Object
 
-A configuration object can be used pass in a number of parameters, some are optional, like the authentication details.
-You must either pass in a `url` or a combination of `protocol`, `hostname` and `port`.
+You must use the `configuration` object if you need to connect to the authenticated
+RESTful API endpoints. The `configuration` object allows you to pass in the
+username and password values.
 
-Using a `url` with some authentication details:
+The `configuration` object can have a number of properties which consist of:
+
+ * `url` The full URL for the TeamCity server, e.g. http://teamcity.domain.com:8111
+ * `protocol` The protocol for the connection, e.g. http
+ * `hostname` The hostname of the server, e.g. teamcity.domain.com
+ * `port` The port for the TeamCity server, e.g. 8111
+ * `username` The username if using authenticated endpoints
+ * `password` The password for the user you are authenticating as
+
+You can specify a full `url` or the combination of `protocol`, `hostname` 
+and an optional `port` depending upon your needs. If you choose to provide a
+`url` along with any other parameters, the `url` will be used and the others
+ignored.
+
+If no authentication details are provided (`username` and `password`) the 
+connection to TeamCity will be performed as a guest. This will require
+guest access to be turned on in the TeamCity Server. If using guest access, 
+some API endpoints may be unavailable, based on the access settings of the TeamCity Server.
+
+User authentication details can be provided using `user` or `username` for the 
+username to connect as and `password` or `pass` for the password for the user. Both a 
+username and password must be provided for the API to attempt to connect with the 
+TeamCity server, otherwise it will fall back to using a guest connection.
+
+Connecting to the TeamCity server with a `url` parameter:
 ```js
-var teamcityAPI = require("teamcity-rest-api");
+var teamcity = require("teamcity-rest-api");
 
-// Using a URL, and authentication
-var teamcity = teamcityAPI.create({
-  url: "http://localhost:8111",
-  username: "admin",
-  password: "a secret"
-  });
+var client = teamcity.create({
+    url: "http://localhost:8111",
+    username: "user",
+    password: "pass"
+});
 ```
 
-Using `protocol`, `hostname`, `port` instead of a `url`:
+Connecting to the TeamCity server with a `protocol`, `hostname` and `port`:
 ```js
-var teamcityAPI = require("teamcity-rest-api");
+var teamcity = require("teamcity-rest-api");
 
-// Using protocol, hostname and port
-var teamcity = teamcityAPI.create({
-  protocol: "https"
-  hostname: "localhost",
-  port: 8111
-  });
+var client = teamcity.create({
+    url: "http://localhost:8111",
+    username: "user",
+    password: "pass"
+});
 ```
-
-If no authentication details are provided the connection to TeamCity will be performed as a guest. This will require
-guest access to be turned on in the TeamCity Server. If using guest access, some API endpoints may be unavailable, based
-on the access settings of the TeamCity Server.
-
-User authentication details can be provided using `user` or `username` for the username to connect as and
-`password` or `pass` for the password for the user. Both a username and password must be provided for the API to attempt to
-connect with the TeamCity Server, oterhwise it will fall back to using a guest connection.
 
 ## TeamCity Version Numbers
 The TeamCity Server has two version numbers that it can report once connected. These are available as a guest or an
@@ -75,13 +92,58 @@ The two version numbers are that of the TeamCity Server software and the other b
 ### Getting the TeamCity Version
 
 ```js
-var teamcityAPI = require("teamcity-rest-api")
-  , teamcity = teamcityAPI.create("http://localhost:8111")
+var teamcity = require("teamcity-rest-api")
+  , client = teamcity.create("http://localhost:8111")
   ;
 
-teamcity.getVersion()
+client.getVersion()
   .then(function(version) {
     console.log("TeamCity Server version: " + version);
   })
-  .done();
+  .catch(function(err) {
+    console.error(err.message);
+  });
+```
+
+### TeamCity API Version
+The API version is a major.minor version number as a string that matches
+the version of TeamCity, e.g. for 9.1.4 it is "9.1".
+
+```js
+var teamcity = require("teamcity-rest-api")
+  , client = teamcity.create("http://localhost:8111")
+  ;
+
+client.getApiVersion()
+  .then(function(version) {
+    console.log("TeamCity Server version: " + version);
+  })
+  .catch(function(err) {
+    console.error(err.message);
+  });
+```
+
+## Projects
+The API provides a `project` object for interacting with various Project
+related activities.
+
+### teamcity.projects.create - Create a Project
+To create a project use the `client.projects.create()` function:
+
+```js
+var teamcity = require("teamcity-rest-api")
+  , client = teamcity.create({
+    url: "http://localhost:8111",
+    username: "user",
+    password: "pass"
+  })
+  ;
+
+client.projects.create()
+  .then(function(project) {
+    console.log(JSON.stringify(project, null, 2));
+  })
+  .catch(function(err) {
+    console.error(err.message);
+  });
 ```

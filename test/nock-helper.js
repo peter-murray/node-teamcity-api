@@ -54,10 +54,15 @@ function getTestPath(test) {
     ;
 
   while (parent.title) {
-    path.unshift(parent.title);
+    path.unshift(cleanString(parent.title));
     parent = parent.parent;
   }
 
-  path.push(test.title);
+  path.push(cleanString(test.title));
   return path.join("/");
+}
+
+function cleanString(str) {
+  // Replace any invalid/tricky characters for a path string
+  return str.replace(/[#\(\) ]/g, '');
 }

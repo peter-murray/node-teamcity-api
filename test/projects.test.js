@@ -7,7 +7,7 @@ var util = require("util")
   , nockHelper = require("./nock-helper")
   ;
 
-describe("Projects", function () {
+describe("#projects", function () {
 
   var teamcity = new TeamCityAPI(testData);
 
@@ -27,81 +27,70 @@ describe("Projects", function () {
     nockHelper.reset();
   });
 
-  describe("#getProjects()", function () {
+  describe("#getAll()", function () {
 
-    it("should obtain all the projects", function (done) {
-      teamcity.getProjects()
+    it("should obtain all the projects", function () {
+      return teamcity.projects.getAll()
         .then(function (projects) {
           expect(projects).to.exist;
 
           expect(projects).to.have.property("_Root");
           expect(projects["_Root"]).to.have.property("name", "<Root project>");
-
-          done();
-        })
-        .done();
+        });
     });
   });
 
-  describe("#getProject()", function () {
+  describe("#get()", function () {
 
-    it("should find the root project by ID", function (done) {
-      teamcity.getProject({id: "_Root"})
+    it("should find the root project by ID", function () {
+      return teamcity.projects.get({id: "_Root"})
         .then(function (project) {
           expect(project).to.exist;
           expect(project).to.have.property("id", "_Root");
-          done();
         })
-        .done();
     });
 
-    it("should find the root project by name", function (done) {
-      teamcity.getProject({name: "<Root project>"})
+    it("should find the root project by name", function () {
+      return teamcity.projects.get({name: "<Root project>"})
         .then(function (project) {
           expect(project).to.exist;
           expect(project).to.have.property("id", "_Root");
-          done();
-        })
-        .done();
+        });
     });
   });
 
-  describe("#createProject()", function () {
+  describe("#create()", function () {
 
-    it("should create a project under id:_Root", function (done) {
-      var projectName = "Project 1448361890414";
-
-      teamcity.createProject(projectName, "_Root")
+    it("should create a project under id:_Root", function () {
+      var projectName = "Project Creation Test";
+      
+      return teamcity.projects.create(projectName, "_Root")
         .then(function (result) {
           expect(result).to.exist;
 
           expect(result).to.have.property("name", projectName);
           expect(result).to.have.property("parentProjectId", "_Root");
-          done();
-        })
-        .done();
+        });
     });
   });
 
-  describe("#setProjectParameter()", function () {
+  describe("#setParameter()", function () {
 
-    it("should set parameter 'myTestValue' on <Root project>", function (done) {
+    it("should set parameter 'myTestValue' on <Root project>", function () {
       var tsValue = 1448369904648;
 
-      teamcity.setProjectParameter({name: "<Root project>"}, "myTestValue", tsValue)
+      return teamcity.projects.setParameter({name: "<Root project>"}, "myTestValue", tsValue)
         .then(function (result) {
           expect(result).to.exist;
           expect(result).to.have.property("name", "myTestValue");
           expect(result).to.have.property("value", "" + tsValue);
-          done();
-        })
-        .done();
+        });
     });
   });
 
-  describe("#setProjectParameters()", function () {
+  describe("#setParameters()", function () {
 
-    it("should set a number of parameters", function (done) {
+    it("should set a number of parameters", function () {
       var time = 1448361890483;
 
       function propertyValidator(properties) {
@@ -117,12 +106,12 @@ describe("Projects", function () {
         };
       }
 
-      teamcity.setProjectParameters({id: "ParametersTestProject"},
+      return teamcity.projects.setParameters({id: "ParametersTestProject"},
         [
           {name: "p1", value: time},
           {name: "p2", value: time},
           {name: "p3", value: time},
-          {name: "p4", value: time},
+          {name: "p4", value: time}
         ])
         .then(function (results) {
           var validator = propertyValidator(results);
@@ -133,37 +122,31 @@ describe("Projects", function () {
           validator.hasProperty("p2", "" + time);
           validator.hasProperty("p3", "" + time);
           validator.hasProperty("p4", "" + time);
-
-          done();
-        })
-        .done();
+        });
     });
   });
 
-  describe("#getProjectParamters()", function () {
+  describe("#getParameters()", function () {
 
-    it("should get the parameters of the <Root project>", function (done) {
-      teamcity.getProjectParameters({id: "_Root"})
+    it("should get the parameters of the <Root project>", function () {
+      return teamcity.projects.getParameters({id: "_Root"})
         .then(function (parameters) {
           expect(parameters).to.exist;
 
           expect(parameters).to.have.property("timestamp");
           expect(parameters.timestamp).to.have.property("own", true);
-
-          done();
-        })
-        .done();
+        });
     });
   });
 
   describe("#createBuildConfiguration()", function () {
 
-    it("should create an empty BuildConfiguration", function (done) {
+    it("should create an empty BuildConfiguration", function () {
       var time = 1448434304622
         , buildName = util.format("Build:%s", time)
         ;
 
-      teamcity.createBuildConfiguration({id: "BuildConfigurationTests"}, buildName)
+      return teamcity.projects.createBuildConfiguration({id: "BuildConfigurationTests"}, buildName)
         .then(function (result) {
           expect(result).to.exist;
 
@@ -171,16 +154,12 @@ describe("Projects", function () {
           expect(result).to.have.property("name", buildName);
 
           expect(result).to.have.property("projectId", "BuildConfigurationTests");
-
-          done();
-        })
-        .done();
+        });
     });
 
     it("should fail to create under the Root Project", function() {
       function create() {
-        teamcity.createBuildConfiguration({id: "_Root"}, "buildThatCannotExist")
-          .done();
+        return teamcity.projects.createBuildConfiguration({id: "_Root"}, "buildThatCannotExist")
       }
 
       expect(create).to.throw(/cannot create a build configuration/i);
@@ -189,12 +168,12 @@ describe("Projects", function () {
 
   describe("#createBuildTemplate()", function () {
 
-    it("should create an empty Build Template", function (done) {
+    it("should create an empty Build Template", function () {
       var time = 1448370750225
         , buildName = util.format("BuildTemplate:%s", time)
         ;
 
-      teamcity.createBuildTemplate({id: "BuildTemplateTests"}, buildName)
+      return teamcity.projects.createBuildTemplate({id: "BuildTemplateTests"}, buildName)
         .then(function (result) {
           expect(result).to.exist;
 
@@ -202,17 +181,14 @@ describe("Projects", function () {
           expect(result).to.have.property("name", buildName);
 
           expect(result).to.have.property("projectId", "BuildTemplateTests");
-
-          done();
-        })
-        .done();
+        });
     });
   });
 
   describe("#getBuildTemplates()", function () {
 
-    it("should get the templates for the Root Project", function (done) {
-      teamcity.getBuildTemplates()
+    it("should get the templates for the Root Project", function () {
+      return teamcity.projects.getBuildTemplates()
         .then(function (templates) {
           expect(templates).to.exist;
 
@@ -221,76 +197,66 @@ describe("Projects", function () {
           expect(templates["TopLevelTemplate"]).to.have.property("id");
           expect(templates["TopLevelTemplate"]).to.have.property("name");
           expect(templates["TopLevelTemplate"]).to.have.property("projectId");
-          done();
-        })
-        .done();
+        });
     });
 
-    it("should get the templates for 'BuildTemplateTests'", function (done) {
-      teamcity.getBuildTemplates({id: "BuildTemplateTests"})
+    it("should get the templates for 'BuildTemplateTests'", function () {
+      return teamcity.projects.getBuildTemplates({id: "BuildTemplateTests"})
         .then(function (templates) {
           expect(templates).to.exist;
           expect(Object.keys(templates)).to.have.length.greaterThan(0);
-          done();
-        })
-        .done();
+        });
     })
   });
 
-  describe("#moveProject()", function () {
+  describe("#move()", function () {
 
-    it("should move an existing Project", function (done) {
+    it("should move an existing Project", function () {
       //var project = {id: "MoveProject"}
-      teamcity.createProject("MoveProject")
+      return teamcity.projects.create("MoveProject")
         .then(function (project) {
           expect(project).to.have.property("parentProjectId", "_Root");
 
-          return teamcity.moveProject({id: project.id}, {id: "ProjectMoveTarget"});
+          return teamcity.projects.move({id: project.id}, {id: "ProjectMoveTarget"});
         })
         //teamcity.moveProject({id: project.id}, {id: "ProjectMoveTarget"})
         .then(function (movedProject) {
           expect(movedProject).to.exist;
           expect(movedProject).to.have.property("parentProjectId", "ProjectMoveTarget");
-          done();
-        })
-        .done();
+        });
     });
   });
 
-  describe("#deleteProject()", function () {
+  describe("#delete()", function () {
 
-    it("should delete an existing project", function (done) {
+    it("should delete an existing project", function () {
       var name = "ProjectToDelete";
 
-      teamcity.createProject(name, "_Root")
+      return teamcity.projects.create(name, "_Root")
         .then(function (project) {
-          return teamcity.deleteProject(project.id);
+          return teamcity.projects.delete(project.id);
         })
         .then(function (result) {
           expect(result).to.be.true;
-          done();
-        })
-        .done();
+        });
     });
   });
 
-  describe("#deleteAllProjectParameters()", function () {
+  describe("#deleteAllParameters()", function () {
 
-    it("should remove all existing parameters", function (done) {
+    it("should remove all existing parameters", function () {
       var projectLocator = {id: "ParametersTestProject"};
 
-      teamcity.setProjectParameter(projectLocator, "parameter_one", "value")
+      return teamcity.projects.setParameter(projectLocator, "parameter_one", "value")
         .then(function (result) {
           expect(result).to.have.property("name", "parameter_one");
           expect(result).to.have.property("own", true);
 
-          return teamcity.deleteAllProjectParameters(projectLocator);
+          return teamcity.projects.deleteAllParameters(projectLocator);
         })
         .then(function (result) {
           expect(result).to.be.true;
-          done();
-        })
-        .done();
+        });
     });
   });
 });

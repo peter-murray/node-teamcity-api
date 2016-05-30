@@ -26,30 +26,24 @@ describe("TeamCityAPI", function () {
   });
 
   describe("#getVersion()", function () {
-
     //TODO need the guest and httpAuth variations tested
 
-    it("should obtain the version of TeamCity", function (done) {
-      teamcity.getVersion()
+    it("should obtain the version of TeamCity", function () {
+      return teamcity.getVersion()
         .then(function (value) {
           expect(value).to.be.at.least(37176);
-          done();
-        })
-        .done();
+        });
     });
   });
 
   describe("#getApiVersion()", function () {
-
     //TODO need the guest and httpAuth variations tested
 
-    it("should obtain the API Version", function (done) {
-      teamcity.getApiVersion()
+    it("should obtain the API Version", function () {
+      return teamcity.getApiVersion()
         .then(function (version) {
           expect(version).to.equal("9.1");
-          done();
-        })
-        .done();
+        });
     });
   });
 });

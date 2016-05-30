@@ -1,0 +1,80 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "PUT",
+        "path": "/httpAuth/app/rest/projects/id:ParametersTestProject/parameters",
+        "body": {
+            "property": [
+                {
+                    "name": "p1",
+                    "value": "1448361890483"
+                },
+                {
+                    "name": "p2",
+                    "value": "1448361890483"
+                },
+                {
+                    "name": "p3",
+                    "value": "1448361890483"
+                },
+                {
+                    "name": "p4",
+                    "value": "1448361890483"
+                }
+            ]
+        },
+        "status": 200,
+        "response": {
+            "count": 7,
+            "href": "/app/rest/projects/id:ParametersTestProject/parameters",
+            "property": [
+                {
+                    "name": "abc",
+                    "value": "xyz"
+                },
+                {
+                    "name": "myTestValue",
+                    "value": "1448369904648"
+                },
+                {
+                    "name": "p1",
+                    "value": "1448361890483",
+                    "own": true
+                },
+                {
+                    "name": "p2",
+                    "value": "1448361890483",
+                    "own": true
+                },
+                {
+                    "name": "p3",
+                    "value": "1448361890483",
+                    "own": true
+                },
+                {
+                    "name": "p4",
+                    "value": "1448361890483",
+                    "own": true
+                },
+                {
+                    "name": "timestamp",
+                    "value": "1448361890450"
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=BD3FAE138895071BF3C4EC3E52B1BAB9; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 24 May 2016 08:21:48 GMT",
+            "connection": "close"
+        }
+    }
+]
