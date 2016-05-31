@@ -339,4 +339,38 @@ describe("#buildConfigurations", function () {
     });
   });
 
+
+  describe("#getSteps()", function() {
+
+    it("should get steps from build", function() {
+      return teamcity.buildConfigurations.getSteps({id: "BuildTemplateTests_BuildWithTemplate"})
+        .then(function(steps) {
+          expect(steps).to.exist;
+
+          expect(steps).to.have.property("count", 2);
+          expect(steps.step).to.be.an.instanceof(Array);
+
+          expect(steps.step[0]).to.have.property("name", "Echo");
+          expect(steps.step[1]).to.have.property("name", "Compile Code");
+        });
+    });
+
+    it("should get steps from build with none", function() {
+      return teamcity.buildConfigurations.getSteps({id: "BuildTemplateTests_BuildWithoutTemplate"})
+        .then(function(steps) {
+          console.log(JSON.stringify(steps, null, 2));
+        });
+    });
+
+    it("should fail for non existent build", function() {
+      return teamcity.buildConfigurations.getSteps({id: "nonExistentBuild"})
+        .then(function () {
+            throw new Error("Should not get here");
+          },
+          function (err) {
+            expect(err).to.be.instanceof(Error);
+          });
+    });
+  });
+
 });
