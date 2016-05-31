@@ -297,4 +297,46 @@ describe("#buildConfigurations", function () {
     });
   });
 
+
+  describe("#detachTemplate()", function() {
+
+    var buildLocator;
+
+    beforeEach(function() {
+      return teamcity.projects.createBuildConfiguration({id: "BuildTemplateTests"}, "TemplateTestDetach")
+        .then(function(result) {
+          buildLocator = {id: result.id};
+          return teamcity.buildConfigurations.attachTemplate(buildLocator, {id: "BuildTemplateTests_BuildTemplate1448370750225"});
+        });
+    });
+
+    afterEach(function() {
+      teamcity.buildConfigurations.delete(buildLocator);
+    });
+
+    it("should detach a template", function() {
+      return teamcity.buildConfigurations.detachTemplate(buildLocator)
+        .then(function(result) {
+          expect(result).to.be.true;
+        });
+    });
+
+    it("should not detach a template when one not attached", function() {
+      return teamcity.buildConfigurations.detachTemplate({id: "BuildTemplateTests_BuildWithoutTemplate"})
+        .then(function(result) {
+          expect(result).to.be.true;
+        });
+    });
+
+    it("should fail for non existent build", function() {
+      return teamcity.buildConfigurations.detachTemplate({id: "nonExistentBuild"})
+        .then(function () {
+            throw new Error("Should not get here");
+          },
+          function (err) {
+            expect(err).to.be.instanceof(Error);
+          });
+    });
+  });
+
 });
