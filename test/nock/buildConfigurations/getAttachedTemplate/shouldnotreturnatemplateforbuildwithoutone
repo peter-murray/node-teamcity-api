@@ -1,0 +1,24 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/buildTypes/id:BuildTemplateTests_BuildWithoutTemplate/template",
+        "body": "",
+        "status": 404,
+        "response": "Error has occurred during request processing (Not Found).\nError: jetbrains.buildServer.server.rest.errors.NotFoundException: No template associated.\nCould not find the entity requested. Check the reference is correct and the user has permissions to access the entity.",
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=680281B1BC52C676459DA12CAFB854D0; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "text/plain",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 31 May 2016 17:10:04 GMT",
+            "connection": "close"
+        }
+    }
+]

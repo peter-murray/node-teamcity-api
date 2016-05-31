@@ -240,29 +240,61 @@ describe("#buildConfigurations", function () {
   });
 
 
-  describe("#attachTemplate()", function() {
+  describe("#attachTemplate()", function () {
 
     var buildLocator
       ;
 
-    beforeEach(function() {
+    beforeEach(function () {
       return teamcity.projects.createBuildConfiguration({id: "BuildTemplateTests"}, "BuildForAttachment")
-        .then(function(build) {
+        .then(function (build) {
           buildLocator = {id: build.id};
         })
     });
 
-    afterEach(function() {
+    afterEach(function () {
       return teamcity.buildConfigurations.delete(buildLocator);
     });
 
-    it("should attach a build template", function() {
+    it("should attach a build template", function () {
       var templateLocator = {id: "BuildTemplateTests_BuildTemplate1448370750225"};
 
       return teamcity.buildConfigurations.attachTemplate(buildLocator, templateLocator)
-        .then(function(result) {
+        .then(function (result) {
           expect(result).to.have.property("id", templateLocator.id);
         });
     })
-  })
+  });
+
+
+  describe("#getAttachedTemplate()", function () {
+
+    it("should get the attached build template", function () {
+      var buildLocator = {id: "BuildTemplateTests_BuildWithTemplate"};
+
+      return teamcity.buildConfigurations.getAttachedTemplate(buildLocator)
+        .then(function (result) {
+          console.log(JSON.stringify(result, null, 2));
+          expect(result).to.have.property("id", "BuildTemplateTests_BuildTemplate1448370750225");
+        });
+    });
+
+    it("should not return a template for build without one", function () {
+      return teamcity.buildConfigurations.getAttachedTemplate({id: "BuildTemplateTests_BuildWithoutTemplate"})
+        .then(function (result) {
+          expect(result).to.be.null;
+        });
+    });
+
+    it("should error on a non-existent template", function () {
+      return teamcity.buildConfigurations.getAttachedTemplate({id: "nonExistentBuild"})
+        .then(function () {
+            throw new Error("Should not get here");
+          },
+          function (err) {
+            expect(err).to.be.instanceof(Error);
+          });
+    });
+  });
+
 });
