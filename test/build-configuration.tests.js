@@ -358,7 +358,7 @@ describe("#buildConfigurations", function () {
     it("should get steps from build with none", function() {
       return teamcity.buildConfigurations.getSteps({id: "BuildTemplateTests_BuildWithoutTemplate"})
         .then(function(steps) {
-          console.log(JSON.stringify(steps, null, 2));
+          expect(steps).to.have.property("count", 0);
         });
     });
 
