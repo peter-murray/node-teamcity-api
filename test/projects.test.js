@@ -81,7 +81,7 @@ describe("#projects", function () {
       var projectName = "Project Creation Test Copy";
       var projectId = "ProjectCreationTestCopy";
 
-      return teamcity.projects.copy(projectName, projectId, "_Root", projectSourceId)
+      return teamcity.projects.copy(projectName, projectId, projectSourceId, "_Root")
         .then(function (result) {
           expect(result).to.exist;
 
