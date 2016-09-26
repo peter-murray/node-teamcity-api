@@ -63,7 +63,7 @@ describe("#projects", function () {
 
     it("should create a project under id:_Root", function () {
       var projectName = "Project Creation Test";
-      
+
       return teamcity.projects.create(projectName, "_Root")
         .then(function (result) {
           expect(result).to.exist;
@@ -83,6 +83,17 @@ describe("#projects", function () {
         .then(function (result) {
           expect(result).to.exist;
           expect(result).to.have.property("name", "myTestValue");
+          expect(result).to.have.property("value", "" + tsValue);
+        });
+    });
+
+    it("should set parameter 'myTestValueString' on <Root project>", function () {
+      var tsValue = "Test String Value";
+
+      return teamcity.projects.setParameter({name: "<Root project>"}, "myTestValueString", tsValue)
+        .then(function (result) {
+          expect(result).to.exist;
+          expect(result).to.have.property("name", "myTestValueString");
           expect(result).to.have.property("value", "" + tsValue);
         });
     });
