@@ -49,6 +49,63 @@ describe("#buildConfigurations", function () {
     //TODO need more tests using different variations of locator
   });
 
+  describe("#getArtifactDependencies()", function () {
+
+    it("should obtain the artifact dependencies by id", function () {
+      return teamcity.buildConfigurations.getArtifactDependencies({id: "Tests_BuildConfigurationTest"})
+        .then(function (artifactDependencies) {
+          expect(artifactDependencies).to.exist;
+
+          expect(artifactDependencies).to.have.property("count", 0);
+        });
+    });
+  });
+
+  describe("#setArtifactDependencies()", function () {
+
+    it("should set artifact dependencies by id", function () {
+      var artifactData = {
+        "count": 1,
+        "artifact-dependency": [{
+          "id": "0",
+          "type": "artifact_dependency",
+          "properties": {
+            "count": 4,
+            "property": [{
+              "name": "cleanDestinationDirectory",
+              "value": "true"
+            }, {
+              "name": "pathRules",
+              "value": "** => teamcity-input"
+            }, {
+              "name": "revisionName",
+              "value": "lastSuccessful"
+            }, {
+              "name": "revisionValue",
+              "value": "latest.lastSuccessful"
+            }]
+          },
+          "source-buildType": {
+            "id": "Tests_BuildConfigurationTest",
+            "name": "Build Configuration Test",
+            "projectName": "Tests",
+            "projectId": "Tests",
+            "href": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest",
+            "webUrl": "http://localhost:8111/viewType.html?buildTypeId=Tests_BuildConfigurationTest"
+          }
+        }]
+      };
+      return teamcity.buildConfigurations.setArtifactDependencies({id: "Tests_BuildConfigurationTest"}, artifactData)
+        .then(function (artifactDependencies) {
+          expect(artifactDependencies).to.exist;
+
+          expect(artifactDependencies).to.have.property("count", 1);
+          expect(artifactDependencies["artifact-dependency"]).to.exist;
+          expect(artifactDependencies["artifact-dependency"][0]).to.have.property("type", "artifact_dependency");
+        });
+    });
+  });
+
   describe("#pause()", function () {
 
     it("should pause a BuildConfiguration", function () {

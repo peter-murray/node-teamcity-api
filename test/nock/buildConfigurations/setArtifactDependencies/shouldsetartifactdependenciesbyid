@@ -1,0 +1,96 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "PUT",
+        "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest/artifact-dependencies",
+        "body": {
+            "count": 1,
+            "artifact-dependency": [
+                {
+                    "id": "0",
+                    "type": "artifact_dependency",
+                    "properties": {
+                        "count": 4,
+                        "property": [
+                            {
+                                "name": "cleanDestinationDirectory",
+                                "value": "true"
+                            },
+                            {
+                                "name": "pathRules",
+                                "value": "** => teamcity-input"
+                            },
+                            {
+                                "name": "revisionName",
+                                "value": "lastSuccessful"
+                            },
+                            {
+                                "name": "revisionValue",
+                                "value": "latest.lastSuccessful"
+                            }
+                        ]
+                    },
+                    "source-buildType": {
+                        "id": "Tests_BuildConfigurationTest",
+                        "name": "Build Configuration Test",
+                        "projectName": "Tests",
+                        "projectId": "Tests",
+                        "href": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest",
+                        "webUrl": "http://localhost:8111/viewType.html?buildTypeId=Tests_BuildConfigurationTest"
+                    }
+                }
+            ]
+        },
+        "status": 200,
+        "response": {
+            "count": 1,
+            "artifact-dependency": [
+                {
+                    "id": "ARTIFACT_DEPENDENCY_1",
+                    "type": "artifact_dependency",
+                    "properties": {
+                        "count": 4,
+                        "property": [
+                            {
+                                "name": "cleanDestinationDirectory",
+                                "value": "true"
+                            },
+                            {
+                                "name": "pathRules",
+                                "value": "** => teamcity-input"
+                            },
+                            {
+                                "name": "revisionName",
+                                "value": "lastSuccessful"
+                            },
+                            {
+                                "name": "revisionValue",
+                                "value": "latest.lastSuccessful"
+                            }
+                        ]
+                    },
+                    "source-buildType": {
+                        "id": "Tests_BuildConfigurationTest",
+                        "name": "BuildConfiguration Test",
+                        "projectName": "Test Data",
+                        "projectId": "TestData",
+                        "href": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest",
+                        "webUrl": "http://10.1.101.126:8111/viewType.html?buildTypeId=Tests_BuildConfigurationTest"
+                    }
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=B71631AC29D4ACA362C8FAB18B2C521C; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 26 Sep 2016 13:51:03 GMT",
+            "connection": "close"
+        }
+    }
+]

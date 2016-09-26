@@ -1,0 +1,24 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest/artifact-dependencies",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 0
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=99682FB948B198CF92B4515654340A69; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Fri, 23 Sep 2016 20:40:52 GMT",
+            "connection": "close"
+        }
+    }
+]
