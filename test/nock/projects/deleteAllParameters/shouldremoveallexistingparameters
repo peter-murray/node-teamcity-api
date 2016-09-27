@@ -5,12 +5,12 @@
         "path": "/httpAuth/app/rest/projects/id:ParametersTestProject/parameters",
         "body": {
             "name": "parameter_one",
-            "value": "\"value\""
+            "value": "value"
         },
         "status": 200,
         "response": {
             "name": "parameter_one",
-            "value": "\"value\"",
+            "value": "value",
             "own": true
         },
         "headers": {
