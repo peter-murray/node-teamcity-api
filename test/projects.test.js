@@ -74,6 +74,23 @@ describe("#projects", function () {
     });
   });
 
+  describe("#copy()", function () {
+
+    it("should copy a project under id:_Root", function () {
+      var projectSourceId = "ProjectCreationTest";
+      var projectName = "Project Creation Test Copy";
+      var projectId = "ProjectCreationTestCopy";
+
+      return teamcity.projects.copy(projectName, projectId, projectSourceId, "_Root")
+        .then(function (result) {
+          expect(result).to.exist;
+
+          expect(result).to.have.property("name", projectName);
+          expect(result).to.have.property("parentProjectId", "_Root");
+        });
+    });
+  });
+
   describe("#setParameter()", function () {
 
     it("should set parameter 'myTestValue' on <Root project>", function () {
