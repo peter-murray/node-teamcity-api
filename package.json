@@ -13,6 +13,7 @@
   "scripts": {
     "test": "mocha -t test"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/peter-murray/node-teamcity-api.git"
