@@ -3,7 +3,7 @@
         "scope": "http://localhost:8111",
         "method": "PUT",
         "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationToPause/paused",
-        "body": false,
+        "body": "false",
         "status": 200,
         "response": false,
         "headers": {
