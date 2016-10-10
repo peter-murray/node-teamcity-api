@@ -1,0 +1,99 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "PUT",
+        "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest/artifact-dependencies",
+        "body": {
+            "count": 1,
+            "artifact-dependency": [
+                {
+                    "id": "0",
+                    "type": "artifact_dependency",
+                    "properties": {
+                        "count": 4,
+                        "property": [
+                            {
+                                "name": "cleanDestinationDirectory",
+                                "value": "true"
+                            },
+                            {
+                                "name": "pathRules",
+                                "value": "** => teamcity-input"
+                            },
+                            {
+                                "name": "revisionName",
+                                "value": "lastSuccessful"
+                            },
+                            {
+                                "name": "revisionValue",
+                                "value": "latest.lastSuccessful"
+                            }
+                        ]
+                    },
+                    "source-buildType": {
+                        "id": "Tests_BuildConfigurationTest",
+                        "name": "Build Configuration Test",
+                        "projectName": "Tests",
+                        "projectId": "Tests",
+                        "href": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest",
+                        "webUrl": "http://localhost:8111/viewType.html?buildTypeId=Tests_BuildConfigurationTest"
+                    }
+                }
+            ]
+        },
+        "status": 200,
+        "response": {
+            "count": 1,
+            "artifact-dependency": [
+                {
+                    "id": "0",
+                    "type": "artifact_dependency",
+                    "properties": {
+                        "count": 4,
+                        "property": [
+                            {
+                                "name": "cleanDestinationDirectory",
+                                "value": "true"
+                            },
+                            {
+                                "name": "pathRules",
+                                "value": "** => teamcity-input"
+                            },
+                            {
+                                "name": "revisionName",
+                                "value": "lastSuccessful"
+                            },
+                            {
+                                "name": "revisionValue",
+                                "value": "latest.lastSuccessful"
+                            }
+                        ]
+                    },
+                    "source-buildType": {
+                        "id": "Tests_BuildConfigurationTest",
+                        "name": "BuildConfigurationTest",
+                        "description": "A simple BuildConfiguration for Testing",
+                        "projectName": "Tests",
+                        "projectId": "Tests",
+                        "href": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest",
+                        "webUrl": "http://localhost:8111/viewType.html?buildTypeId=Tests_BuildConfigurationTest"
+                    }
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=90B0BA8A7016C2D0E34E6937645F6699; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:46 GMT",
+            "connection": "close"
+        }
+    }
+]

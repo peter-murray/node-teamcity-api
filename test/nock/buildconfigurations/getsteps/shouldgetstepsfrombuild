@@ -1,0 +1,72 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/buildTypes/id:BuildTemplateTests_BuildWithTemplate/steps",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 2,
+            "step": [
+                {
+                    "id": "RUNNER_1",
+                    "name": "Echo",
+                    "type": "simpleRunner",
+                    "properties": {
+                        "count": 3,
+                        "property": [
+                            {
+                                "name": "script.content",
+                                "value": "echo"
+                            },
+                            {
+                                "name": "teamcity.step.mode",
+                                "value": "default"
+                            },
+                            {
+                                "name": "use.custom.script",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "RUNNER_2",
+                    "name": "Compile Code",
+                    "type": "simpleRunner",
+                    "properties": {
+                        "count": 3,
+                        "property": [
+                            {
+                                "name": "script.content",
+                                "value": "javac MyClass.java"
+                            },
+                            {
+                                "name": "teamcity.step.mode",
+                                "value": "default"
+                            },
+                            {
+                                "name": "use.custom.script",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=CE351B08D29E7174987F62A201BA0172; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:47 GMT",
+            "connection": "close"
+        }
+    }
+]

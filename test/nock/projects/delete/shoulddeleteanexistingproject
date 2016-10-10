@@ -1,0 +1,94 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/projects",
+        "body": "<newProjectDescription name=\"ProjectToDelete\"><parentProject locator=\"id:_Root\" /></newProjectDescription>",
+        "status": 200,
+        "response": {
+            "id": "ProjectToDelete",
+            "name": "ProjectToDelete",
+            "parentProjectId": "_Root",
+            "href": "/httpAuth/app/rest/projects/id:ProjectToDelete",
+            "webUrl": "http://localhost:8111/project.html?projectId=ProjectToDelete",
+            "parentProject": {
+                "id": "_Root",
+                "name": "<Root project>",
+                "description": "Contains all other projects",
+                "href": "/httpAuth/app/rest/projects/id:_Root",
+                "webUrl": "http://localhost:8111/project.html?projectId=_Root"
+            },
+            "buildTypes": {
+                "count": 0,
+                "buildType": []
+            },
+            "templates": {
+                "count": 0,
+                "buildType": []
+            },
+            "parameters": {
+                "count": 4,
+                "href": "/app/rest/projects/id:ProjectToDelete/parameters",
+                "property": [
+                    {
+                        "name": "abc",
+                        "value": "xyz"
+                    },
+                    {
+                        "name": "myTestValue",
+                        "value": "1448369904648"
+                    },
+                    {
+                        "name": "myTestValueString",
+                        "value": "Test String Value"
+                    },
+                    {
+                        "name": "timestamp",
+                        "value": "1448361890450"
+                    }
+                ]
+            },
+            "vcsRoots": {
+                "count": 0,
+                "href": "/httpAuth/app/rest/vcs-roots?locator=project:(id:ProjectToDelete)"
+            },
+            "projects": {
+                "count": 0
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=EF933D0832F4DE0655EB7563C4EF5253; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:48 GMT",
+            "connection": "close"
+        }
+    },
+    {
+        "scope": "http://localhost:8111",
+        "method": "DELETE",
+        "path": "/httpAuth/app/rest/projects/id:ProjectToDelete",
+        "body": "",
+        "status": 204,
+        "response": "",
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=55249301C7FB22A63A5F79A7FFBA1ED3; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "date": "Mon, 10 Oct 2016 20:57:48 GMT",
+            "connection": "close"
+        }
+    }
+]

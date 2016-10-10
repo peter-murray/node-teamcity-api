@@ -1,0 +1,51 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/projects/id:ParametersTestProject/parameters",
+        "body": {
+            "name": "parameter_one",
+            "value": "value"
+        },
+        "status": 200,
+        "response": {
+            "name": "parameter_one",
+            "value": "value",
+            "own": true
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=C29EF754C64603D965643D1A0E101824; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:48 GMT",
+            "connection": "close"
+        }
+    },
+    {
+        "scope": "http://localhost:8111",
+        "method": "DELETE",
+        "path": "/httpAuth/app/rest/projects/id:ParametersTestProject/parameters",
+        "body": "",
+        "status": 204,
+        "response": "",
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=D150E546F6F1EDF8220A07009BEE4281; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "date": "Mon, 10 Oct 2016 20:57:48 GMT",
+            "connection": "close"
+        }
+    }
+]

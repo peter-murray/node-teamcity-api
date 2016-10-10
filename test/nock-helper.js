@@ -64,5 +64,6 @@ function getTestPath(test) {
 
 function cleanString(str) {
   // Replace any invalid/tricky characters for a path string
-  return str.replace(/[#\(\) ]/g, '');
+  var myStr = str.replace(/[#\(\):'"<> ]/g, '');
+  return myStr.toLowerCase();
 }

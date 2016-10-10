@@ -1,0 +1,24 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "PUT",
+        "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationToPause/paused",
+        "body": true,
+        "status": 200,
+        "response": true,
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=816E80CBB85761533AE2BC066A1AC12B; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "text/plain",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 21:11:11 GMT",
+            "connection": "close"
+        }
+    }
+]

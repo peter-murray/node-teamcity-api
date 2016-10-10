@@ -1,0 +1,36 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/projects/id:BuildTemplateTests/templates",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 1,
+            "buildType": [
+                {
+                    "id": "BuildTemplateTests_BuildTemplate1448370750225",
+                    "name": "BuildTemplate:1448370750225",
+                    "templateFlag": true,
+                    "projectName": "BuildTemplateTests",
+                    "projectId": "BuildTemplateTests",
+                    "href": "/httpAuth/app/rest/buildTypes/id:BuildTemplateTests_BuildTemplate1448370750225"
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=F00F20FE569159D8279089079AD7A86A; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:48 GMT",
+            "connection": "close"
+        }
+    }
+]
