@@ -1,0 +1,64 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "PUT",
+        "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest/triggers",
+        "body": {
+            "count": 8,
+            "trigger": [
+                {
+                    "id": "TEST_TRIGGER_12345",
+                    "type": "buildDependencyTrigger",
+                    "properties": {
+                        "count": 2,
+                        "property": [
+                            {
+                                "name": "afterSuccessfulBuildOnly",
+                                "value": "true"
+                            },
+                            {
+                                "name": "dependsOn",
+                                "value": "Tests_BuildConfigurationTest"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "status": 200,
+        "response": {
+            "count": 1,
+            "trigger": [
+                {
+                    "id": "TRIGGER_1",
+                    "type": "buildDependencyTrigger",
+                    "properties": {
+                        "count": 2,
+                        "property": [
+                            {
+                                "name": "afterSuccessfulBuildOnly",
+                                "value": "true"
+                            },
+                            {
+                                "name": "dependsOn",
+                                "value": "Tests_BuildConfigurationTest"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=451789088FC00DDE23B6022B97E54BAD; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Wed, 28 Sep 2016 20:24:14 GMT",
+            "connection": "close"
+        }
+    }
+]

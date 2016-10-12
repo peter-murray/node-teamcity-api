@@ -106,6 +106,49 @@ describe("#buildConfigurations", function () {
     });
   });
 
+  describe("#getTriggers()", function () {
+
+    it("should obtain the triggers by build configuration id", function () {
+      return teamcity.buildConfigurations.getTriggers({id: "Tests_BuildConfigurationTest"})
+        .then(function (triggers) {
+          expect(triggers).to.exist;
+
+          expect(triggers).to.have.property("count", 0);
+        });
+    });
+  });
+
+  describe("#setTriggers()", function () {
+
+    it("should set triggers by build configuration id", function () {
+      var triggerData = {
+        "count": 8,
+        "trigger": [{
+          "id": "TEST_TRIGGER_12345",
+          "type": "buildDependencyTrigger",
+          "properties": {
+            "count": 2,
+            "property": [{
+              "name": "afterSuccessfulBuildOnly",
+              "value": "true"
+            }, {
+              "name": "dependsOn",
+              "value": "Tests_BuildConfigurationTest"
+            }]
+          }
+        }]
+      };
+      return teamcity.buildConfigurations.setTriggers({id: "Tests_BuildConfigurationTest"}, triggerData)
+        .then(function (triggers) {
+          expect(triggers).to.exist;
+
+          expect(triggers).to.have.property("count", 1);
+          expect(triggers["trigger"]).to.exist;
+          expect(triggers["trigger"][0]).to.have.property("type", "buildDependencyTrigger");
+        });
+    });
+  });
+
   describe("#pause()", function () {
 
     it("should pause a BuildConfiguration", function () {
