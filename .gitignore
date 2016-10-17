@@ -5,3 +5,7 @@ node_modules
 .DS_Store
 .idea
 *.iml
+
+.vscode
+jsconfig.json
+launch.json
