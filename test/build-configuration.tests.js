@@ -382,8 +382,8 @@ describe("#buildConfigurations", function () {
 
       return teamcity.buildConfigurations.getAttachedTemplate(buildLocator)
         .then(function (result) {
-          console.log(JSON.stringify(result, null, 2));
           expect(result).to.have.property("id", "BuildTemplateTests_BuildTemplate1448370750225");
+          expect(result).to.have.property("templateFlag", true)
         });
     });
 
