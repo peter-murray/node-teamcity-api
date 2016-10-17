@@ -45,9 +45,17 @@ describe("#buildConfigurations", function () {
           expect(buildConfig).to.have.property("parameters");
         });
     });
-
+    
     //TODO need more tests using different variations of locator
+    it("should obtain the BuildConfiguration by name", function() {
+      return teamcity.buildConfigurations.get({name: "BuildConfigurationTest"})
+        .then(function (buildConfig) {
+          expect(buildConfig).to.exist;
+          expect(buildConfig).to.have.property("id", "Tests_BuildConfigurationTest");
+        });
+    });
   });
+
 
   describe("#getArtifactDependencies()", function () {
 
