@@ -1,0 +1,120 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/builds/?locator=buildType:(id:Test_Config,count:10)",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 10,
+            "href": "/httpAuth/app/rest/builds/?locator=buildType:(id:Test_Config,count:10)",
+            "nextHref": "/httpAuth/app/rest/builds/?locator=buildType:(name:Test_Config,count:10,start:10)",
+            "build": [
+                {
+                "id": 84814,
+                "buildTypeId": "Test_Build",
+                "number": "336",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:84814",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=84814&buildTypeId=Test_Build"
+                },
+                {
+                "id": 84721,
+                "buildTypeId": "Test_Build",
+                "number": "335",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:84721",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=84721&buildTypeId=Test_Build"
+                },
+                {
+                "id": 84689,
+                "buildTypeId": "Test_Build",
+                "number": "334",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:84689",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=84689&buildTypeId=Test_Build"
+                },
+                {
+                "id": 84676,
+                "buildTypeId": "Test_Build",
+                "number": "333",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:84676",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=84676&buildTypeId=Test_Build"
+                },
+                {
+                "id": 84496,
+                "buildTypeId": "Test_Build",
+                "number": "331",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:84496",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=84496&buildTypeId=Test_Build"
+                },
+                {
+                "id": 84491,
+                "buildTypeId": "Test_Build",
+                "number": "330",
+                "status": "FAILURE",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:84491",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=84491&buildTypeId=Test_Build"
+                },
+                {
+                "id": 84186,
+                "buildTypeId": "Test_Build",
+                "number": "328",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:84186",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=84186&buildTypeId=Test_Build"
+                },
+                {
+                "id": 83917,
+                "buildTypeId": "Test_Build",
+                "number": "327",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:83917",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=83917&buildTypeId=Test_Build"
+                },
+                {
+                "id": 83783,
+                "buildTypeId": "Test_Build",
+                "number": "326",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:83783",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=83783&buildTypeId=Test_Build"
+                },
+                {
+                "id": 83319,
+                "buildTypeId": "Test_Build",
+                "number": "325",
+                "status": "SUCCESS",
+                "state": "finished",
+                "href": "/httpAuth/app/rest/builds/id:83319",
+                "webUrl": "http://zethos:8888/viewLog.html?buildId=83319&buildTypeId=Test_Build"
+                }
+            ]
+            },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=4E4F49CBF0E49CA42BC102BB6688FD54; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:46 GMT",
+            "connection": "close"
+        }
+    }
+]
