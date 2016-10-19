@@ -29,7 +29,7 @@ describe("Builds", function () {
 
     it("should get builds by count for a named build config", function() {
         var countObj = {count:10}
-        return teamcity.builds.getWithCount({name: "Test"},{dimensions: countObj})
+        return teamcity.builds.getByBuildTypeWithCount({name: "Test"},{dimensions: countObj})
             .then(function (builds) {
                 expect(builds).to.exist;
             });
@@ -37,8 +37,16 @@ describe("Builds", function () {
 
     it("should get builds by count for a build config by id", function() {
         var countObj = {count:10}
-        return teamcity.builds.getWithCount({id: "Test_Config"}, {dimensions: countObj})
+        return teamcity.builds.getByBuildTypeWithCount({id: "Test_Config"}, {dimensions: countObj})
             .then(function (builds) {
+                expect(builds).to.exist;
+            });
+    });
+
+    it("should get builds by count for a project by id", function() {
+        var countObj = {count:10}
+        return teamcity.builds.getByProjectWithCount({project: "TestProject"}, {dimensions: countObj})
+            .then(function(builds) {
                 expect(builds).to.exist;
             });
     });

@@ -2,13 +2,13 @@
     {
         "scope": "http://localhost:8111",
         "method": "GET",
-        "path": "/httpAuth/app/rest/builds/?locator=buildType:(name:Test,count:10)",
+        "path": "/httpAuth/app/rest/builds/?locator=buildType:(name:Test),count:10,defaultFilter:false",
         "body": "",
         "status": 200,
         "response": {
             "count": 10,
-            "href": "/httpAuth/app/rest/builds/?locator=buildType:name:Test,count:10",
-            "nextHref": "/httpAuth/app/rest/builds/?locator=buildType:(name:Test),count:10,start:10",
+            "href": "/httpAuth/app/rest/builds/?locator=buildType:(name:Test),count:10,defaultFilter:false",
+            "nextHref": "/httpAuth/app/rest/builds/?locator=buildType:(name:Test),count:10,start:10,defaultFilter:false",
             "build": [
                 {
                 "id": 84814,
