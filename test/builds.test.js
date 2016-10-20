@@ -59,4 +59,18 @@ describe("Builds", function () {
     });
 
     });
+
+    describe("#startBuilds()", function() {
+
+        it("should start a build given a node", function () {
+            var xmlObj = "<build> <buildType id=\"TestBuildConfig\"/> </build>"
+            return teamcity.builds.startBuild(xmlObj)
+                .then(function(builds) {
+                    console.log(builds);
+                    expect(builds).to.exist;
+                    expect(builds).to.have.property("id", 85618);
+                });
+        });
+    });
+
 });

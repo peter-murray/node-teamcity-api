@@ -1,0 +1,71 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/buildQueue",
+        "body": "<build> <buildType id=\"TestBuildConfig\"/> </build>",
+        "status": 200,
+        "response": {
+                "id": 85618,
+                "buildTypeId": "TestBuildConfig",
+                "state": "queued",
+                "href": "/httpAuth/app/rest/buildQueue/id:85618",
+                "webUrl": "http://localhost:8111/viewQueued.html?itemId=85618",
+                "buildType": {
+                    "id": "TestBuildConfig",
+                    "name": "AustinTest",
+                    "description": "Test Build Config",
+                    "projectName": "Apprenda Experimental",
+                    "projectId": "ApprendaExperimental",
+                    "href": "/httpAuth/app/rest/buildTypes/id:TestBuildConfig",
+                    "webUrl": "http://localhost:8111/viewType.html?buildTypeId=TestBuildConfig"
+                },
+                "startEstimate": "20161019T150146-0400",
+                "queuedDate": "20161019T150134-0400",
+                "triggered": {
+                    "type": "user",
+                    "date": "20161019T150134-0400",
+                    "user": {
+                    "username": "testuser",
+                    "id": 29,
+                    "href": "/httpAuth/app/rest/users/id:29"
+                    }
+                },
+                "changes": {
+                    "href": "/httpAuth/app/rest/changes?locator=build:(id:85618)"
+                },
+                "revisions": {
+                    "count": 0
+                },
+                "compatibleAgents": {
+                    "href": "/httpAuth/app/rest/buildQueue/id:85618/compatibleAgents"
+                },
+                "artifacts": {
+                    "href": "/httpAuth/app/rest/builds/id:85618/artifacts/children/"
+                },
+                "properties": {
+                    "count": 1,
+                    "property": [
+                    {
+                        "name": "testProp",
+                        "value": "ehlo"
+                    }
+                    ]
+                }
+            },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=4E4F49CBF0E49CA42BC102BB6688FD54; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:46 GMT",
+            "connection": "close"
+        }
+    }
+]
