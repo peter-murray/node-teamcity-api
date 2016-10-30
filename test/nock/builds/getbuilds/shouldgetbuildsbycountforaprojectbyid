@@ -1,0 +1,140 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/builds/?locator=project:TestProject,count:10,defaultFilter:false",
+        "body": "",
+        "status": 200,
+        "response": {
+                "count": 10,
+                "href": "/httpAuth/app/rest/builds/?locator=project:TestProject,count:10,defaultFilter:false",
+                "nextHref": "/httpAuth/app/rest/builds/?locator=count:10,start:10,project:TestProject,defaultFilter:false",
+                "build": [
+                    {
+                    "id": 85576,
+                    "buildTypeId": "Test_Build",
+                    "number": "Dummy-r7266-b1313",
+                    "status": "FAILURE",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85576",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85576&buildTypeId=Test_Build"
+                    },
+                    {
+                    "id": 85565,
+                    "buildTypeId": "DummySlowBuild",
+                    "number": "Dummy-r7266-b7622",
+                    "status": "SUCCESS",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85565",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85565&buildTypeId=DummySlowBuild"
+                    },
+                    {
+                    "id": 85540,
+                    "buildTypeId": "DummySlowBuild",
+                    "number": "Dummy-r7259-b7616",
+                    "status": "SUCCESS",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85540",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85540&buildTypeId=DummySlowBuild"
+                    },
+                    {
+                    "id": 85493,
+                    "buildTypeId": "Test_Build",
+                    "number": "Dummy-r7241-b1310",
+                    "status": "SUCCESS",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85493",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85493&buildTypeId=Test_Build"
+                    },
+                    {
+                    "id": 85392,
+                    "buildTypeId": "DummySlowBuild",
+                    "number": "Dummy-r7241-b7597",
+                    "status": "SUCCESS",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85392",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85392&buildTypeId=DummySlowBuild"
+                    },
+                    {
+                    "id": 85391,
+                    "buildTypeId": "Test_Build",
+                    "number": "Dummy-r7241-b1301",
+                    "status": "SUCCESS",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85391",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85391&buildTypeId=Test_Build"
+                    },
+                    {
+                    "id": 85372,
+                    "buildTypeId": "Test_Build",
+                    "number": "Dummy-r7234-b1300",
+                    "status": "FAILURE",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85372",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85372&buildTypeId=Test_Build"
+                    },
+                    {
+                    "id": 85367,
+                    "buildTypeId": "DummySlowBuild",
+                    "number": "Dummy-r7234-b7592",
+                    "status": "FAILURE",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85367",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85367&buildTypeId=DummySlowBuild"
+                    },
+                    {
+                    "id": 85339,
+                    "buildTypeId": "Test_Build",
+                    "number": "Dummy-r7232-b1299",
+                    "status": "SUCCESS",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85339",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85339&buildTypeId=Test_Build"
+                    },
+                    {
+                    "id": 85303,
+                    "buildTypeId": "DummySlowBuild",
+                    "number": "Dummy-rddd930503c09-b7587",
+                    "status": "SUCCESS",
+                    "state": "finished",
+                    "branchName": "Dummy",
+                    "defaultBranch": true,
+                    "href": "/httpAuth/app/rest/builds/id:85303",
+                    "webUrl": "http://localhost:8111/viewLog.html?buildId=85303&buildTypeId=DummySlowBuild"
+                    }
+                ]
+            },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=4E4F49CBF0E49CA42BC102BB6688FD54; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:46 GMT",
+            "connection": "close"
+        }
+    }
+]

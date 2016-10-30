@@ -1,0 +1,94 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/builds/id:1001",
+        "body": "",
+        "status": 200,
+        "response": {
+            "id": 1001,
+            "buildTypeId": "Test_Build",
+            "number": "1001",
+            "status": "SUCCESS",
+            "state": "finished",
+            "href": "/httpAuth/app/rest/builds/id:1001",
+            "webUrl": "http://localhost:8111/viewLog.html?buildId=1001&buildTypeId=Test_Build",
+            "statusText": "Success",
+            "buildType": {
+                "id": "Test_Build",
+                "name": "TestBuild",
+                "paused": false,
+                "projectName": "Test Build Project",
+                "projectId": "Test_Build_Project",
+                "href": "/httpAuth/app/rest/buildTypes/id:Test_Build_Project",
+                "webUrl": "http://localhost:8111/viewType.html?buildTypeId=Test_Build_Project"
+            },
+            "queuedDate": "20161003T185225-0400",
+            "startDate": "20161003T185225-0400",
+            "finishDate": "20161003T202322-0400",
+            "triggered": {
+                "type": "user",
+                "date": "20161003T185225-0400",
+                "user": {
+                "username": "test",
+                "name": "Test",
+                "id": 26,
+                "href": "/httpAuth/app/rest/users/id:26"
+                }
+            },
+            "changes": {
+                "href": "/httpAuth/app/rest/changes?locator=build:(id:1001)"
+            },
+            "revisions": {
+                "count": 0
+            },
+            "agent": {
+                "id": 16,
+                "name": "AGENT16",
+                "typeId": 16,
+                "href": "/httpAuth/app/rest/agents/id:16"
+            },
+            "artifacts": {
+                "href": "/httpAuth/app/rest/builds/id:1001/artifacts/children/"
+            },
+            "relatedIssues": {
+                "href": "/httpAuth/app/rest/builds/id:1001/relatedIssues"
+            },
+            "properties": {
+                "count": 1,
+                "property": [
+                {
+                    "name": "Test",
+                    "value": "True"
+                }
+                ]
+            },
+            "attributes": {
+                "count": 1,
+                "entry": [
+                {
+                    "name": "teamcity.cleanSources",
+                    "value": "true"
+                }
+                ]
+            },
+            "statistics": {
+                "href": "/httpAuth/app/rest/builds/id:1001/statistics"
+            }
+            },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=4E4F49CBF0E49CA42BC102BB6688FD54; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "pragma": "no-cache",
+            "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+            "cache-control": "no-cache, no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Mon, 10 Oct 2016 20:57:46 GMT",
+            "connection": "close"
+        }
+    }
+]

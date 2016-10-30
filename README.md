@@ -147,3 +147,47 @@ client.projects.create()
     console.error(err.message);
   });
 ```
+
+## Builds
+The API provides a `builds` object to interact with Build Configurations.
+
+### teamcity.builds.get - Get a specific build
+```js
+client.builds.get({id: 100})
+  .then(function(build) {
+    console.log(build.state)
+  });
+```
+
+### teamcity.builds.getByBuildTypeWithCount and getByProjectWithCount - Get a list of builds for a configuration
+These methods provide different ways to get a list of builds of a specific build configuration.
+To list builds by the name or ID of a build config, use `getByBuildTypeWithCount`.
+To list builds for a particular project, use `getByProjectWithCount`.
+Both of these methods do not apply default filtering from TeamCity, so you will get in-progress builds as well.
+
+```js
+client.builds.getByBuildTypeWithCount({id: "BuildConfigId"}, {dimensions: {count:10}})
+  .then(function(buildList){
+    console.log(buildList.build[0]) //buildList.build is an array of builds, from most recent to the count parameter
+  });
+
+client.builds.getByProjectWithCount({name: "TestBuildProject"}, {dimensions: {count:10}})
+  .then(function(buildList){
+    console.log(buildList.build[0].id) //build id can be passed to builds.get for more detailed info
+  });
+```
+
+The TeamCity API documentation has more examples of dimensions that can be passed into these lookups.
+
+### teamcity.builds.startBuild - Run a build configuration.
+This method allows you to start a build configuration; It'll return the build number of the running build.
+
+```js
+var buildNodeObject = "<build> <buildType id=\"TestConfigId\" /> </build>"
+teamcity.builds.startBuild(buildNodeObject)
+  .then(function(buildStatus) {
+    console.log(buildStatus.id)
+  });
+```
+
+Refer to the TeamCity REST API documentation for more info on what can be passed as a buildNode.
