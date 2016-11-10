@@ -1,0 +1,22 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/builds/id:1001/resulting-properties",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 2,
+            "property": [
+                {
+                    "name": "Test.Property",
+                    "value": "True"
+                },
+                {
+                    "name": "internal.Flag",
+                    "value": "/path/to/flag"
+                }
+            ]
+        }
+    }
+]

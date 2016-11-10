@@ -58,6 +58,13 @@ describe("Builds", function () {
             });
     });
 
+    it("should get build properties by id", function() {
+        return teamcity.builds.getBuildPropertiesById({id: 1001})
+            .then(function (builds) {
+                expect(builds).to.exist;
+            });
+    });
+
     });
 
     describe("#startBuilds()", function() {
