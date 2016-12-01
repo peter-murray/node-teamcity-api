@@ -45,7 +45,7 @@ describe("#buildConfigurations", function () {
           expect(buildConfig).to.have.property("parameters");
         });
     });
-    
+
     //TODO need more tests using different variations of locator
     it("should obtain the BuildConfiguration by name", function() {
       return teamcity.buildConfigurations.get({name: "BuildConfigurationTest"})
@@ -154,6 +154,191 @@ describe("#buildConfigurations", function () {
           expect(triggers["trigger"]).to.exist;
           expect(triggers["trigger"][0]).to.have.property("type", "buildDependencyTrigger");
         });
+    });
+  });
+
+  describe("#isTriggerDisabled()", function() {
+
+    describe('when trigger is disabled', function() {
+      it("returns true", function () {
+        return teamcity.buildConfigurations.isTriggerDisabled({id: "Tests_DisabledTriggerBuildConfiguration"}, "vcsTrigger")
+          .then(function (result) {
+            expect(result).to.have.property("disabled", true);
+          });
+      });
+    });
+
+    describe('when trigger is enabled', function() {
+      it("returns false", function () {
+        return teamcity.buildConfigurations.isTriggerDisabled({id: "Tests_EnabledTriggerBuildConfiguration"}, "vcsTrigger")
+          .then(function (result) {
+            expect(result).to.have.property("disabled", false);
+          });
+      });
+    });
+  });
+
+  describe("#disableTrigger()", function () {
+
+    it("should disable a trigger in a BuildConfiguration", function () {
+      return teamcity.buildConfigurations.disableTrigger({id: "Tests_BuildConfigurationToDisableTrigger"}, "vcsTrigger")
+        .then(function (result) {
+          expect(result).to.have.property("disabled", true);
+        });
+    });
+  });
+
+  describe("#enableTrigger()", function () {
+
+    it("should enable a trigger in a BuildConfiguration", function () {
+      return teamcity.buildConfigurations.enableTrigger({id: "Tests_BuildConfigurationToDisableTrigger"}, "vcsTrigger")
+        .then(function (result) {
+          expect(result).to.have.property("disabled", false);
+        });
+    });
+  });
+
+  describe("features", function () {
+    var  featureData = {
+      "id": "jetbrains.agent.free.space",
+      "type": "jetbrains.agent.free.space",
+      "properties": {
+        "count": 1,
+        "property": [{
+          "name": "free-space-work",
+          "value": "3gb"
+        }]
+      }
+    };
+
+    var featuresData = {
+      "count": 2,
+      "feature": [
+        featureData,
+        {
+            "id": "perfmon",
+            "type": "perfmon"
+        }
+      ]
+    };
+
+    var emptyFeaturesData = {
+      "count": 0
+    };
+
+    var projectId
+      , buildLocator
+      ;
+
+    // Create an empty configuration in a test project
+    beforeEach(function () {
+      var projectTitle = "features test - " + this.currentTest.fullTitle().replace(/[#\(\):'"<> ]/g, '');
+      return teamcity.projects.create(projectTitle, "_Root")
+        .then(function (project) {
+          projectId = project.id;
+          return teamcity.projects.createBuildConfiguration({id: project.id}, "featuresTest")
+        })
+        .then(function (created) {
+          buildLocator = {id: created.id};
+        });
+    });
+
+    afterEach(function (done) {
+      if (projectId) {
+        teamcity.projects.delete({id: projectId})
+          .then(function () {
+            done();
+          })
+      } else {
+        done();
+      }
+    });
+
+    describe("#getFeatures()", function () {
+
+      describe('when build configuration has no features', function () {
+        it('should return an empty feature set', function() {
+          return teamcity.buildConfigurations.setFeatures(buildLocator, emptyFeaturesData)
+            .then(function () {
+              return teamcity.buildConfigurations.getFeatures(buildLocator);
+            })
+            .then(function (result) {
+              expect(result).to.exist;
+              expect(result).to.deep.equal(emptyFeaturesData);
+            });
+        });
+      });
+
+      describe('when build configuration has two features', function() {
+        it("should return a feature set with two features", function () {
+          return teamcity.buildConfigurations.setFeatures(buildLocator, featuresData)
+            .then(function () {
+              return teamcity.buildConfigurations.getFeatures(buildLocator);
+            })
+            .then(function (result) {
+              expect(result).to.exist;
+              expect(result).to.deep.equal(featuresData);
+            });
+        });
+      });
+    });
+
+    describe("#setFeatures()", function () {
+      it("should set the complete set of features for a build configuration", function () {
+        return teamcity.buildConfigurations.setFeatures(buildLocator, featuresData)
+          .then(function (result) {
+            expect(result).to.exist;
+            expect(result).to.deep.equal(featuresData);
+          });
+      });
+    });
+
+    describe("#addFeature()", function () {
+
+      beforeEach(function () {
+        return teamcity.buildConfigurations.setFeatures(buildLocator, emptyFeaturesData);
+      });
+
+      it("should add features by build configuration id", function () {
+        return teamcity.buildConfigurations.addFeature(buildLocator, featureData)
+          .then(function (feature) {
+            expect(feature).to.exist;
+            expect(feature).to.deep.equal(featureData);
+          });
+      });
+    });
+
+
+    describe("#deleteFeature()", function () {
+
+      beforeEach(function () {
+        return teamcity.buildConfigurations.addFeature(buildLocator, featureData)
+        .then(function (result) {
+          expect(result).to.exist;
+          expect(result).to.have.property("id", featureData.id);
+        });
+      });
+
+      it("should remove an existing Feature", function () {
+        return teamcity.buildConfigurations.deleteFeature(buildLocator, featureData.id)
+          .then(function (result) {
+            expect(result).to.be.true;
+            return teamcity.buildConfigurations.getFeatures(buildLocator);
+          })
+          .then(function (result) {
+            expect(result).to.deep.equal(emptyFeaturesData);
+          });
+      });
+
+      it("should fail to remove a non-existing Feature", function () {
+        return teamcity.buildConfigurations.deleteFeature(buildLocator, "nonExistentFeature")
+          .then(function () {
+              throw new Error("should never get here");
+            }
+            , function (err) {
+              expect(err.message).to.contain("No feature with id 'nonExistentFeature' is found in the build configuration.");
+            });
+      });
     });
   });
 

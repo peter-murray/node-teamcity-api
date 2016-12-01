@@ -1,0 +1,22 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "GET",
+        "path": "/httpAuth/app/rest/buildTypes/id:Tests_DisabledTriggerBuildConfiguration/triggers/vcsTrigger/disabled",
+        "body": "",
+        "status": 200,
+        "response": true,
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=6AEE9A95FD85123101662A4B602B7334; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "text/plain",
+            "transfer-encoding": "chunked",
+            "date": "Tue, 29 Nov 2016 19:33:55 GMT",
+            "connection": "close"
+        }
+    }
+]
