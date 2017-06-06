@@ -1,0 +1,224 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/projects",
+        "body": "<newProjectDescription name=\"features test - buildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigurationid\"><parentProject locator=\"id:_Root\" /></newProjectDescription>",
+        "status": 200,
+        "response": {
+            "id": "FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+            "name": "features test - buildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigurationid",
+            "parentProjectId": "_Root",
+            "href": "/httpAuth/app/rest/projects/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+            "webUrl": "http://localhost:8111/project.html?projectId=FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+            "parentProject": {
+                "id": "_Root",
+                "name": "<Root project>",
+                "description": "Contains all other projects",
+                "href": "/httpAuth/app/rest/projects/id:_Root",
+                "webUrl": "http://localhost:8111/project.html?projectId=_Root"
+            },
+            "buildTypes": {
+                "count": 0,
+                "buildType": []
+            },
+            "templates": {
+                "count": 0,
+                "buildType": []
+            },
+            "parameters": {
+                "count": 0,
+                "href": "/app/rest/projects/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu/parameters",
+                "property": []
+            },
+            "vcsRoots": {
+                "count": 0,
+                "href": "/httpAuth/app/rest/vcs-roots?locator=project:(id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu)"
+            },
+            "projectFeatures": {
+                "count": 0,
+                "href": "/app/rest/projects/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu/projectFeatures"
+            },
+            "projects": {
+                "count": 0
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=FEF4340738CC38F0E3E54EDB74A2A7F6; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Thu, 01 Dec 2016 17:25:50 GMT",
+            "connection": "close"
+        }
+    },
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/projects/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu/buildTypes",
+        "body": "featuresTest",
+        "status": 200,
+        "response": {
+            "id": "FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+            "name": "featuresTest",
+            "projectName": "features test - buildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigurationid",
+            "projectId": "FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+            "href": "/httpAuth/app/rest/buildTypes/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+            "webUrl": "http://localhost:8111/viewType.html?buildTypeId=FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+            "project": {
+                "id": "FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+                "name": "features test - buildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigurationid",
+                "parentProjectId": "_Root",
+                "href": "/httpAuth/app/rest/projects/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+                "webUrl": "http://localhost:8111/project.html?projectId=FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu"
+            },
+            "vcs-root-entries": {
+                "count": 0,
+                "vcs-root-entry": []
+            },
+            "settings": {
+                "count": 1,
+                "property": [
+                    {
+                        "name": "buildNumberCounter",
+                        "value": "1"
+                    }
+                ]
+            },
+            "parameters": {
+                "count": 0,
+                "href": "/app/rest/buildTypes/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu/parameters",
+                "property": []
+            },
+            "steps": {
+                "count": 0
+            },
+            "features": {
+                "count": 0
+            },
+            "triggers": {
+                "count": 0
+            },
+            "snapshot-dependencies": {
+                "count": 0
+            },
+            "artifact-dependencies": {
+                "count": 0
+            },
+            "agent-requirements": {
+                "count": 0
+            },
+            "builds": {
+                "href": "/httpAuth/app/rest/buildTypes/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu/builds/"
+            },
+            "investigations": {
+                "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu)"
+            },
+            "compatibleAgents": {
+                "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu))"
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=1D1293B0512926A4A39A57C93A073A6C; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Thu, 01 Dec 2016 17:25:50 GMT",
+            "connection": "close"
+        }
+    },
+    {
+        "scope": "http://localhost:8111",
+        "method": "PUT",
+        "path": "/httpAuth/app/rest/buildTypes/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu/features",
+        "body": {
+            "count": 0
+        },
+        "status": 200,
+        "response": {
+            "count": 0
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=7CB616845B36467AA94A7C294CE2D03E; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Thu, 01 Dec 2016 17:25:50 GMT",
+            "connection": "close"
+        }
+    },
+    {
+        "scope": "http://localhost:8111",
+        "method": "POST",
+        "path": "/httpAuth/app/rest/buildTypes/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu/features",
+        "body": {
+            "id": "jetbrains.agent.free.space",
+            "type": "jetbrains.agent.free.space",
+            "properties": {
+                "count": 1,
+                "property": [
+                    {
+                        "name": "free-space-work",
+                        "value": "3gb"
+                    }
+                ]
+            }
+        },
+        "status": 200,
+        "response": {
+            "id": "jetbrains.agent.free.space",
+            "type": "jetbrains.agent.free.space",
+            "properties": {
+                "count": 1,
+                "property": [
+                    {
+                        "name": "free-space-work",
+                        "value": "3gb"
+                    }
+                ]
+            }
+        },
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=FDBFCA96DE86B91AAB4A16FB574145E1; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "content-type": "application/json",
+            "transfer-encoding": "chunked",
+            "date": "Thu, 01 Dec 2016 17:25:50 GMT",
+            "connection": "close"
+        }
+    },
+    {
+        "scope": "http://localhost:8111",
+        "method": "DELETE",
+        "path": "/httpAuth/app/rest/projects/id:FeaturesTestBuildConfigurationsfeaturesaddFeatureshouldaddfeaturesbybuildconfigu",
+        "body": "",
+        "status": 204,
+        "response": "",
+        "headers": {
+            "server": "Apache-Coyote/1.1",
+            "set-cookie": [
+                "TCSESSIONID=4F16A87971AE660F07276533D22CD950; Path=/; HttpOnly",
+                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
+            ],
+            "cache-control": "no-store",
+            "date": "Thu, 01 Dec 2016 17:25:50 GMT",
+            "connection": "close"
+        }
+    }
+]
