@@ -184,7 +184,7 @@ This method allows you to start a build configuration; It'll return the build nu
 
 ```js
 var buildNodeObject = "<build> <buildType id=\"TestConfigId\" /> </build>"
-teamcity.builds.startBuild(buildNodeObject)
+client.builds.startBuild(buildNodeObject)
   .then(function(buildStatus) {
     console.log(buildStatus.id)
   });
