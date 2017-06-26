@@ -1,8 +1,8 @@
 [
     {
         "scope": "http://localhost:8111",
-        "method": "PUT",
-        "path": "/httpAuth/app/rest/buildTypes/id:Tests_BuildConfigurationTest/triggers",
+        "method": "put",
+        "path": "/httpAuth/app/rest/buildTypes/id:BuildConfigurations_WithTriggers/triggers",
         "body": {
             "count": 8,
             "trigger": [
@@ -30,7 +30,7 @@
             "count": 1,
             "trigger": [
                 {
-                    "id": "TRIGGER_1",
+                    "id": "TRIGGER_2",
                     "type": "buildDependencyTrigger",
                     "properties": {
                         "count": 2,
@@ -48,17 +48,23 @@
                 }
             ]
         },
-        "headers": {
-            "server": "Apache-Coyote/1.1",
-            "set-cookie": [
-                "TCSESSIONID=451789088FC00DDE23B6022B97E54BAD; Path=/; HttpOnly",
-                "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly"
-            ],
-            "cache-control": "no-store",
-            "content-type": "application/json",
-            "transfer-encoding": "chunked",
-            "date": "Wed, 28 Sep 2016 20:24:14 GMT",
-            "connection": "close"
-        }
+        "rawHeaders": [
+            "Server",
+            "Apache-Coyote/1.1",
+            "Set-Cookie",
+            "TCSESSIONID=B9692EBA8FCFA372121EDD9456656265; Path=/; HttpOnly",
+            "Set-Cookie",
+            "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly",
+            "Cache-Control",
+            "no-store",
+            "Content-Type",
+            "application/json",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 26 Jun 2017 13:46:47 GMT",
+            "Connection",
+            "close"
+        ]
     }
 ]

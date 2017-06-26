@@ -1,10 +1,10 @@
 "use strict";
 
 var expect = require("chai").expect
-  , TeamCityAPI = require("../lib/api")
-  , testData = require("./config/test-data")
-  , nockHelper = require("./nock-helper")
-  ;
+    , TeamCityAPI = require("../lib/api")
+    , testData = require("./config/test-data")
+    , nockHelper = require("./nock-helper")
+;
 
 describe("#buildConfigurations", function () {
 
@@ -30,29 +30,29 @@ describe("#buildConfigurations", function () {
 
     it("should obtain the BuildConfiguration by id", function () {
       return teamcity.buildConfigurations.get({id: "Tests_BuildConfigurationTest"})
-        .then(function (buildConfig) {
-          expect(buildConfig).to.exist;
+          .then(function (buildConfig) {
+            expect(buildConfig).to.exist;
 
-          expect(buildConfig).to.have.property("id", "Tests_BuildConfigurationTest");
-          expect(buildConfig).to.have.property("name", "BuildConfigurationTest");
+            expect(buildConfig).to.have.property("id", "Tests_BuildConfigurationTest");
+            expect(buildConfig).to.have.property("name", "BuildConfigurationTest");
 
-          expect(buildConfig).to.have.property("projectId", "Tests");
-          expect(buildConfig).to.have.property("project");
+            expect(buildConfig).to.have.property("projectId", "Tests");
+            expect(buildConfig).to.have.property("project");
 
-          expect(buildConfig).to.have.property("vcs-root-entries");
-          expect(buildConfig).to.have.property("settings");
-          expect(buildConfig).to.have.property("parameters");
-          expect(buildConfig).to.have.property("parameters");
-        });
+            expect(buildConfig).to.have.property("vcs-root-entries");
+            expect(buildConfig).to.have.property("settings");
+            expect(buildConfig).to.have.property("parameters");
+            expect(buildConfig).to.have.property("parameters");
+          });
     });
 
     //TODO need more tests using different variations of locator
-    it("should obtain the BuildConfiguration by name", function() {
+    it("should obtain the BuildConfiguration by name", function () {
       return teamcity.buildConfigurations.get({name: "BuildConfigurationTest"})
-        .then(function (buildConfig) {
-          expect(buildConfig).to.exist;
-          expect(buildConfig).to.have.property("id", "Tests_BuildConfigurationTest");
-        });
+          .then(function (buildConfig) {
+            expect(buildConfig).to.exist;
+            expect(buildConfig).to.have.property("id", "Tests_BuildConfigurationTest");
+          });
     });
   });
 
@@ -61,11 +61,11 @@ describe("#buildConfigurations", function () {
 
     it("should obtain the artifact dependencies by id", function () {
       return teamcity.buildConfigurations.getArtifactDependencies({id: "Tests_BuildConfigurationTest"})
-        .then(function (artifactDependencies) {
-          expect(artifactDependencies).to.exist;
+          .then(function (artifactDependencies) {
+            expect(artifactDependencies).to.exist;
 
-          expect(artifactDependencies).to.have.property("count", 0);
-        });
+            expect(artifactDependencies).to.have.property("count", 0);
+          });
     });
   });
 
@@ -103,262 +103,37 @@ describe("#buildConfigurations", function () {
           }
         }]
       };
+
       return teamcity.buildConfigurations.setArtifactDependencies({id: "Tests_BuildConfigurationTest"}, artifactData)
-        .then(function (artifactDependencies) {
-          expect(artifactDependencies).to.exist;
+          .then(function (artifactDependencies) {
+            expect(artifactDependencies).to.exist;
 
-          expect(artifactDependencies).to.have.property("count", 1);
-          expect(artifactDependencies["artifact-dependency"]).to.exist;
-          expect(artifactDependencies["artifact-dependency"][0]).to.have.property("type", "artifact_dependency");
-        });
-    });
-  });
-
-  describe("#getTriggers()", function () {
-
-    it("should obtain the triggers by build configuration id", function () {
-      return teamcity.buildConfigurations.getTriggers({id: "Tests_BuildConfigurationTest"})
-        .then(function (triggers) {
-          expect(triggers).to.exist;
-
-          expect(triggers).to.have.property("count", 0);
-        });
-    });
-  });
-
-  describe("#setTriggers()", function () {
-
-    it("should set triggers by build configuration id", function () {
-      var triggerData = {
-        "count": 8,
-        "trigger": [{
-          "id": "TEST_TRIGGER_12345",
-          "type": "buildDependencyTrigger",
-          "properties": {
-            "count": 2,
-            "property": [{
-              "name": "afterSuccessfulBuildOnly",
-              "value": "true"
-            }, {
-              "name": "dependsOn",
-              "value": "Tests_BuildConfigurationTest"
-            }]
-          }
-        }]
-      };
-      return teamcity.buildConfigurations.setTriggers({id: "Tests_BuildConfigurationTest"}, triggerData)
-        .then(function (triggers) {
-          expect(triggers).to.exist;
-
-          expect(triggers).to.have.property("count", 1);
-          expect(triggers["trigger"]).to.exist;
-          expect(triggers["trigger"][0]).to.have.property("type", "buildDependencyTrigger");
-        });
-    });
-  });
-
-  describe("#isTriggerDisabled()", function() {
-
-    describe('when trigger is disabled', function() {
-      it("returns true", function () {
-        return teamcity.buildConfigurations.isTriggerDisabled({id: "Tests_DisabledTriggerBuildConfiguration"}, "vcsTrigger")
-          .then(function (result) {
-            expect(result).to.have.property("disabled", true);
+            expect(artifactDependencies).to.have.property("count", 1);
+            expect(artifactDependencies["artifact-dependency"]).to.exist;
+            expect(artifactDependencies["artifact-dependency"][0]).to.have.property("type", "artifact_dependency");
           });
-      });
-    });
-
-    describe('when trigger is enabled', function() {
-      it("returns false", function () {
-        return teamcity.buildConfigurations.isTriggerDisabled({id: "Tests_EnabledTriggerBuildConfiguration"}, "vcsTrigger")
-          .then(function (result) {
-            expect(result).to.have.property("disabled", false);
-          });
-      });
     });
   });
 
-  describe("#disableTrigger()", function () {
-
-    it("should disable a trigger in a BuildConfiguration", function () {
-      return teamcity.buildConfigurations.disableTrigger({id: "Tests_BuildConfigurationToDisableTrigger"}, "vcsTrigger")
-        .then(function (result) {
-          expect(result).to.have.property("disabled", true);
-        });
-    });
-  });
-
-  describe("#enableTrigger()", function () {
-
-    it("should enable a trigger in a BuildConfiguration", function () {
-      return teamcity.buildConfigurations.enableTrigger({id: "Tests_BuildConfigurationToDisableTrigger"}, "vcsTrigger")
-        .then(function (result) {
-          expect(result).to.have.property("disabled", false);
-        });
-    });
-  });
-
-  describe("features", function () {
-    var  featureData = {
-      "id": "jetbrains.agent.free.space",
-      "type": "jetbrains.agent.free.space",
-      "properties": {
-        "count": 1,
-        "property": [{
-          "name": "free-space-work",
-          "value": "3gb"
-        }]
-      }
-    };
-
-    var featuresData = {
-      "count": 2,
-      "feature": [
-        featureData,
-        {
-            "id": "perfmon",
-            "type": "perfmon"
-        }
-      ]
-    };
-
-    var emptyFeaturesData = {
-      "count": 0
-    };
-
-    var projectId
-      , buildLocator
-      ;
-
-    // Create an empty configuration in a test project
-    beforeEach(function () {
-      var projectTitle = "features test - " + this.currentTest.fullTitle().replace(/[#\(\):'"<> ]/g, '');
-      return teamcity.projects.create(projectTitle, "_Root")
-        .then(function (project) {
-          projectId = project.id;
-          return teamcity.projects.createBuildConfiguration({id: project.id}, "featuresTest")
-        })
-        .then(function (created) {
-          buildLocator = {id: created.id};
-        });
-    });
-
-    afterEach(function (done) {
-      if (projectId) {
-        teamcity.projects.delete({id: projectId})
-          .then(function () {
-            done();
-          })
-      } else {
-        done();
-      }
-    });
-
-    describe("#getFeatures()", function () {
-
-      describe('when build configuration has no features', function () {
-        it('should return an empty feature set', function() {
-          return teamcity.buildConfigurations.setFeatures(buildLocator, emptyFeaturesData)
-            .then(function () {
-              return teamcity.buildConfigurations.getFeatures(buildLocator);
-            })
-            .then(function (result) {
-              expect(result).to.exist;
-              expect(result).to.deep.equal(emptyFeaturesData);
-            });
-        });
-      });
-
-      describe('when build configuration has two features', function() {
-        it("should return a feature set with two features", function () {
-          return teamcity.buildConfigurations.setFeatures(buildLocator, featuresData)
-            .then(function () {
-              return teamcity.buildConfigurations.getFeatures(buildLocator);
-            })
-            .then(function (result) {
-              expect(result).to.exist;
-              expect(result).to.deep.equal(featuresData);
-            });
-        });
-      });
-    });
-
-    describe("#setFeatures()", function () {
-      it("should set the complete set of features for a build configuration", function () {
-        return teamcity.buildConfigurations.setFeatures(buildLocator, featuresData)
-          .then(function (result) {
-            expect(result).to.exist;
-            expect(result).to.deep.equal(featuresData);
-          });
-      });
-    });
-
-    describe("#addFeature()", function () {
-
-      beforeEach(function () {
-        return teamcity.buildConfigurations.setFeatures(buildLocator, emptyFeaturesData);
-      });
-
-      it("should add features by build configuration id", function () {
-        return teamcity.buildConfigurations.addFeature(buildLocator, featureData)
-          .then(function (feature) {
-            expect(feature).to.exist;
-            expect(feature).to.deep.equal(featureData);
-          });
-      });
-    });
-
-
-    describe("#deleteFeature()", function () {
-
-      beforeEach(function () {
-        return teamcity.buildConfigurations.addFeature(buildLocator, featureData)
-        .then(function (result) {
-          expect(result).to.exist;
-          expect(result).to.have.property("id", featureData.id);
-        });
-      });
-
-      it("should remove an existing Feature", function () {
-        return teamcity.buildConfigurations.deleteFeature(buildLocator, featureData.id)
-          .then(function (result) {
-            expect(result).to.be.true;
-            return teamcity.buildConfigurations.getFeatures(buildLocator);
-          })
-          .then(function (result) {
-            expect(result).to.deep.equal(emptyFeaturesData);
-          });
-      });
-
-      it("should fail to remove a non-existing Feature", function () {
-        return teamcity.buildConfigurations.deleteFeature(buildLocator, "nonExistentFeature")
-          .then(function () {
-              throw new Error("should never get here");
-            }
-            , function (err) {
-              expect(err.message).to.contain("No feature with id 'nonExistentFeature' is found in the build configuration.");
-            });
-      });
-    });
-  });
 
   describe("#pause()", function () {
 
     it("should pause a BuildConfiguration", function () {
       return teamcity.buildConfigurations.pause({id: "Tests_BuildConfigurationToPause"})
-        .then(function (result) {
-          expect(result).to.have.property("paused", true);
-        });
+          .then(function (result) {
+            expect(result).to.have.property("paused", true);
+          });
     });
   });
 
+  
   describe("#unpause()", function () {
 
     it("should unpause a BuildConfiguration", function () {
       return teamcity.buildConfigurations.unpause({id: "Tests_BuildConfigurationToPause"})
-        .then(function (result) {
-          expect(result).to.have.property("paused", false);
-        });
+          .then(function (result) {
+            expect(result).to.have.property("paused", false);
+          });
     });
   });
 
@@ -366,16 +141,16 @@ describe("#buildConfigurations", function () {
 
     it("should report back the paused status", function () {
       return teamcity.buildConfigurations.isPaused({id: "Tests_PausedBuildConfiguration"})
-        .then(function (result) {
-          expect(result).to.have.property("paused", true);
-        });
+          .then(function (result) {
+            expect(result).to.have.property("paused", true);
+          });
     });
 
     it("should report that the BuildConfiguration is not paused", function () {
       return teamcity.buildConfigurations.isPaused({id: "Tests_UnpausedBuildConfiguration"})
-        .then(function (result) {
-          expect(result).to.have.property("paused", false);
-        });
+          .then(function (result) {
+            expect(result).to.have.property("paused", false);
+          });
     });
   });
 
@@ -383,35 +158,35 @@ describe("#buildConfigurations", function () {
 
     it("should obtain all VCS Roots", function () {
       return teamcity.buildConfigurations.getVcsRoots({id: "Tests_Deploy"})
-        .then(function (vcsRoots) {
-          expect(vcsRoots).to.have.property("OrgTest");
-        });
+          .then(function (vcsRoots) {
+            expect(vcsRoots).to.have.property("OrgTest");
+          });
     })
   });
 
   describe("#attachVcsRoot()", function () {
 
     var projectId
-      , buildLocator
-      ;
+        , buildLocator
+    ;
 
     beforeEach(function () {
       return teamcity.projects.create("test", "_Root")
-        .then(function (project) {
-          projectId = project.id;
-          return teamcity.projects.createBuildConfiguration({id: project.id}, "addVcsRootTest")
-        })
-        .then(function (created) {
-          buildLocator = {id: created.id};
-        });
+          .then(function (project) {
+            projectId = project.id;
+            return teamcity.projects.createBuildConfiguration({id: project.id}, "addVcsRootTest")
+          })
+          .then(function (created) {
+            buildLocator = {id: created.id};
+          });
     });
 
     afterEach(function (done) {
       if (buildLocator) {
         teamcity.projects.delete({id: projectId})
-          .then(function () {
-            done();
-          });
+            .then(function () {
+              done();
+            });
       } else {
         done();
       }
@@ -419,50 +194,50 @@ describe("#buildConfigurations", function () {
 
     it("should add a new VCS Root", function () {
       return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest")
-        .then(function (result) {
-          expect(result).to.be.true;
-        });
+          .then(function (result) {
+            expect(result).to.be.true;
+          });
     });
 
     it("should work when adding an existing VCS Root", function () {
       return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest")
-        .then(function (result) {
-          expect(result).to.be.true;
-          return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest");
-        })
-        .then(function (result) {
-          expect(result).to.be.true;
-        });
+          .then(function (result) {
+            expect(result).to.be.true;
+            return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest");
+          })
+          .then(function (result) {
+            expect(result).to.be.true;
+          });
     });
   });
 
   describe("#deleteVcsRoot()", function () {
 
     var projectId
-      , buildLocator
-      ;
+        , buildLocator
+    ;
 
     beforeEach(function () {
       return teamcity.projects.create("test", "_Root")
-        .then(function (project) {
-          projectId = project.id;
-          return teamcity.projects.createBuildConfiguration({id: project.id}, "deleteVcsRootTest")
-        })
-        .then(function (created) {
-          buildLocator = {id: created.id};
-          return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest");
-        })
-        .then(function (result) {
-          expect(result).to.be.true;
-        });
+          .then(function (project) {
+            projectId = project.id;
+            return teamcity.projects.createBuildConfiguration({id: project.id}, "deleteVcsRootTest")
+          })
+          .then(function (created) {
+            buildLocator = {id: created.id};
+            return teamcity.buildConfigurations.attachVcsRoot(buildLocator, "OrgTest");
+          })
+          .then(function (result) {
+            expect(result).to.be.true;
+          });
     });
 
     afterEach(function (done) {
       if (projectId) {
         teamcity.projects.delete({id: projectId})
-          .then(function () {
-            done();
-          })
+            .then(function () {
+              done();
+            })
       } else {
         done();
       }
@@ -470,45 +245,45 @@ describe("#buildConfigurations", function () {
 
     it("should remove an existing VCS Root", function () {
       return teamcity.buildConfigurations.detachVcsRoot(buildLocator, "OrgTest")
-        .then(function (result) {
-          expect(result).to.be.true;
-        });
+          .then(function (result) {
+            expect(result).to.be.true;
+          });
     });
 
     it("should fail to remove a non-existing VCS Root", function () {
       return teamcity.buildConfigurations.detachVcsRoot(buildLocator, "nonExistentRoot")
-        .then(function () {
-            throw new Error("should never get here");
-          }
-          , function (err) {
-            expect(err.message).to.contain("No VCS root found by internal or external id");
-          });
+          .then(function () {
+                throw new Error("should never get here");
+              }
+              , function (err) {
+                expect(err.message).to.contain("No VCS root found by internal or external id");
+              });
     });
   });
 
   describe("#delete()", function () {
 
     var projectId
-      , buildLocator
-      ;
+        , buildLocator
+    ;
 
     beforeEach(function () {
       return teamcity.projects.create("test", "_Root")
-        .then(function (project) {
-          projectId = project.id;
-          return teamcity.projects.createBuildConfiguration({id: project.id}, "deleteBuildConfiguration")
-        })
-        .then(function (result) {
-          buildLocator = {id: result.id};
-        });
+          .then(function (project) {
+            projectId = project.id;
+            return teamcity.projects.createBuildConfiguration({id: project.id}, "deleteBuildConfiguration")
+          })
+          .then(function (result) {
+            buildLocator = {id: result.id};
+          });
     });
 
     afterEach(function (done) {
       if (projectId) {
         teamcity.projects.delete({id: projectId})
-          .then(function () {
-            done();
-          });
+            .then(function () {
+              done();
+            });
       } else {
         done();
       }
@@ -516,33 +291,32 @@ describe("#buildConfigurations", function () {
 
     it("should delete an existing Build Configuration", function () {
       return teamcity.buildConfigurations.delete(buildLocator)
-        .then(function (result) {
-          expect(result).to.be.true;
-        });
+          .then(function (result) {
+            expect(result).to.be.true;
+          });
     });
 
     it("should fail to delete a non-existing Build Configuration", function () {
       return teamcity.buildConfigurations.delete({id: "TestConfigThatDoesNotExist"})
-        .then(function () {
-            throw new Error("Should not get here");
-          },
-          function (err) {
-            expect(err.message).to.contain("No build type nor template is found by id");
-          });
+          .then(function () {
+                throw new Error("Should not get here");
+              },
+              function (err) {
+                expect(err.message).to.contain("No build type nor template is found by id");
+              });
     });
   });
 
 
   describe("#attachTemplate()", function () {
 
-    var buildLocator
-      ;
+    var buildLocator;
 
     beforeEach(function () {
       return teamcity.projects.createBuildConfiguration({id: "BuildTemplateTests"}, "BuildForAttachment")
-        .then(function (build) {
-          buildLocator = {id: build.id};
-        })
+          .then(function (build) {
+            buildLocator = {id: build.id};
+          })
     });
 
     afterEach(function () {
@@ -553,9 +327,9 @@ describe("#buildConfigurations", function () {
       var templateLocator = {id: "BuildTemplateTests_BuildTemplate1448370750225"};
 
       return teamcity.buildConfigurations.attachTemplate(buildLocator, templateLocator)
-        .then(function (result) {
-          expect(result).to.have.property("id", templateLocator.id);
-        });
+          .then(function (result) {
+            expect(result).to.have.property("id", templateLocator.id);
+          });
     })
   });
 
@@ -566,103 +340,103 @@ describe("#buildConfigurations", function () {
       var buildLocator = {id: "BuildTemplateTests_BuildWithTemplate"};
 
       return teamcity.buildConfigurations.getAttachedTemplate(buildLocator)
-        .then(function (result) {
-          expect(result).to.have.property("id", "BuildTemplateTests_BuildTemplate1448370750225");
-          expect(result).to.have.property("templateFlag", true)
-        });
+          .then(function (result) {
+            expect(result).to.have.property("id", "BuildTemplateTests_BuildTemplate1448370750225");
+            expect(result).to.have.property("templateFlag", true)
+          });
     });
 
     it("should not return a template for build without one", function () {
       return teamcity.buildConfigurations.getAttachedTemplate({id: "BuildTemplateTests_BuildWithoutTemplate"})
-        .then(function (result) {
-          expect(result).to.be.null;
-        });
+          .then(function (result) {
+            expect(result).to.be.null;
+          });
     });
 
     it("should error on a non-existent template", function () {
       return teamcity.buildConfigurations.getAttachedTemplate({id: "nonExistentBuild"})
-        .then(function () {
-            throw new Error("Should not get here");
-          },
-          function (err) {
-            expect(err).to.be.instanceof(Error);
-          });
+          .then(function () {
+                throw new Error("Should not get here");
+              },
+              function (err) {
+                expect(err).to.be.instanceof(Error);
+              });
     });
   });
 
 
-  describe("#detachTemplate()", function() {
+  describe("#detachTemplate()", function () {
 
     var buildLocator;
 
-    beforeEach(function() {
+    beforeEach(function () {
       return teamcity.projects.createBuildConfiguration({id: "BuildTemplateTests"}, "TemplateTestDetach")
-        .then(function(result) {
-          buildLocator = {id: result.id};
-          return teamcity.buildConfigurations.attachTemplate(buildLocator, {id: "BuildTemplateTests_BuildTemplate1448370750225"});
-        });
+          .then(function (result) {
+            buildLocator = {id: result.id};
+            return teamcity.buildConfigurations.attachTemplate(buildLocator, {id: "BuildTemplateTests_BuildTemplate1448370750225"});
+          });
     });
 
-    afterEach(function() {
+    afterEach(function () {
       teamcity.buildConfigurations.delete(buildLocator);
     });
 
-    it("should detach a template", function() {
+    it("should detach a template", function () {
       return teamcity.buildConfigurations.detachTemplate(buildLocator)
-        .then(function(result) {
-          expect(result).to.be.true;
-        });
-    });
-
-    it("should not detach a template when one not attached", function() {
-      return teamcity.buildConfigurations.detachTemplate({id: "BuildTemplateTests_BuildWithoutTemplate"})
-        .then(function(result) {
-          expect(result).to.be.true;
-        });
-    });
-
-    it("should fail for non existent build", function() {
-      return teamcity.buildConfigurations.detachTemplate({id: "nonExistentBuild"})
-        .then(function () {
-            throw new Error("Should not get here");
-          },
-          function (err) {
-            expect(err).to.be.instanceof(Error);
+          .then(function (result) {
+            expect(result).to.be.true;
           });
+    });
+
+    it("should not detach a template when one not attached", function () {
+      return teamcity.buildConfigurations.detachTemplate({id: "BuildTemplateTests_BuildWithoutTemplate"})
+          .then(function (result) {
+            expect(result).to.be.true;
+          });
+    });
+
+    it("should fail for non existent build", function () {
+      return teamcity.buildConfigurations.detachTemplate({id: "nonExistentBuild"})
+          .then(function () {
+                throw new Error("Should not get here");
+              },
+              function (err) {
+                expect(err).to.be.instanceof(Error);
+              });
     });
   });
 
 
-  describe("#getSteps()", function() {
+  describe("#getSteps()", function () {
 
-    it("should get steps from build", function() {
+    it("should get steps from build", function () {
       return teamcity.buildConfigurations.getSteps({id: "BuildTemplateTests_BuildWithTemplate"})
-        .then(function(steps) {
-          expect(steps).to.exist;
+          .then(function (steps) {
+            expect(steps).to.exist;
 
-          expect(steps).to.have.property("count", 2);
-          expect(steps.step).to.be.an.instanceof(Array);
+            expect(steps).to.have.property("count", 2);
+            expect(steps.step).to.be.an.instanceof(Array);
 
-          expect(steps.step[0]).to.have.property("name", "Echo");
-          expect(steps.step[1]).to.have.property("name", "Compile Code");
-        });
-    });
-
-    it("should get steps from build with none", function() {
-      return teamcity.buildConfigurations.getSteps({id: "BuildTemplateTests_BuildWithoutTemplate"})
-        .then(function(steps) {
-          expect(steps).to.have.property("count", 0);
-        });
-    });
-
-    it("should fail for non existent build", function() {
-      return teamcity.buildConfigurations.getSteps({id: "nonExistentBuild"})
-        .then(function () {
-            throw new Error("Should not get here");
-          },
-          function (err) {
-            expect(err).to.be.instanceof(Error);
+            expect(steps.step[0]).to.have.property("name", "Echo");
+            expect(steps.step[1]).to.have.property("name", "Compile Code");
           });
+    });
+
+    it("should get steps from build with none", function () {
+      return teamcity.buildConfigurations.getSteps({id: "BuildTemplateTests_BuildWithoutTemplate"})
+          .then(function (steps) {
+            expect(steps).to.have.property("count", 0);
+          });
+    });
+
+    it("should fail for non existent build", function () {
+      return teamcity.buildConfigurations.getSteps({id: "nonExistentBuild"})
+          .then(function () {
+                throw new Error("Should not get here");
+              },
+              function (err) {
+                expect(err).to.be.instanceof(Error);
+              });
     });
   });
 

@@ -31,7 +31,8 @@ describe("TeamCityAPI", function () {
     it("should obtain the version of TeamCity", function () {
       return teamcity.getVersion()
         .then(function (value) {
-          expect(value).to.be.at.least(37176);
+          var version = Number.parseInt(value);
+          expect(version).to.be.at.least(37293);
         });
     });
   });
@@ -42,7 +43,7 @@ describe("TeamCityAPI", function () {
     it("should obtain the API Version", function () {
       return teamcity.getApiVersion()
         .then(function (version) {
-          expect(version).to.equal("9.1");
+          expect(version).to.equal("2017.1");
         });
     });
   });

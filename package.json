@@ -2,13 +2,13 @@
   "name": "teamcity-rest-api",
   "version": "0.0.8",
   "dependencies": {
-    "axios": "^0.11.1",
-    "deep-extend": "^0.4.0"
+    "axios": "^0.16.2",
+    "deep-extend": "^0.5.0"
   },
   "devDependencies": {
-    "mocha": "^2.5.2",
-    "chai": "^3.5.0",
-    "nock": "^3.6.0"
+    "mocha": "^3.4.2",
+    "chai": "^4.0.2",
+    "nock": "^9.0.13"
   },
   "scripts": {
     "test": "mocha -t test"

@@ -73,7 +73,6 @@ describe("Builds", function () {
             var xmlObj = "<build> <buildType id=\"TestBuildConfig\"/> </build>"
             return teamcity.builds.startBuild(xmlObj)
                 .then(function(builds) {
-                    console.log(builds);
                     expect(builds).to.exist;
                     expect(builds).to.have.property("id", 85618);
                 });

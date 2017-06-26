@@ -1,0 +1,30 @@
+[
+    {
+        "scope": "http://localhost:8111",
+        "method": "get",
+        "path": "/httpAuth/app/rest/buildTypes/id:BuildConfigurations_NoTriggers/triggers",
+        "body": "",
+        "status": 200,
+        "response": {
+            "count": 0
+        },
+        "rawHeaders": [
+            "Server",
+            "Apache-Coyote/1.1",
+            "Set-Cookie",
+            "TCSESSIONID=47823EF04209FFCBC5397FC7F5A3AF6E; Path=/; HttpOnly",
+            "Set-Cookie",
+            "RememberMe=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly",
+            "Cache-Control",
+            "no-store",
+            "Content-Type",
+            "application/json",
+            "Transfer-Encoding",
+            "chunked",
+            "Date",
+            "Mon, 26 Jun 2017 13:40:06 GMT",
+            "Connection",
+            "close"
+        ]
+    }
+]

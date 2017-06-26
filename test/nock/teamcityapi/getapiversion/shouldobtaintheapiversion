@@ -5,7 +5,7 @@
         "path": "/guestAuth/app/rest/apiVersion",
         "body": "",
         "status": 200,
-        "response": 9.1,
+        "response": 2017.1,
         "headers": {
             "server": "Apache-Coyote/1.1",
             "set-cookie": [
