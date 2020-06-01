@@ -3,7 +3,7 @@
   "version": "0.0.8",
   "dependencies": {
     "axios": "^0.16.2",
-    "deep-extend": "^0.5.0"
+    "deep-extend": "^0.5.1"
   },
   "devDependencies": {
     "mocha": "^3.4.2",
