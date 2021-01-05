@@ -2,7 +2,7 @@
   "name": "teamcity-rest-api",
   "version": "0.0.8",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "deep-extend": "^0.5.1"
   },
   "devDependencies": {
